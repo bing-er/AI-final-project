@@ -336,7 +336,7 @@ def build_dataloader(data_root, condition='joint', split='train',
         shuffle=shuffle,
         sampler=sampler,
         num_workers=num_workers,
-        pin_memory=True,
+        pin_memory=torch.cuda.is_available(),  # False on Mac, True on Colab A100
         drop_last=(split == 'train'),
     )
 
