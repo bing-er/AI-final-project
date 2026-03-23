@@ -1,32 +1,66 @@
-# Python
+# ── Datasets (too large for Git) ─────────────────────────────
+data/
+*.zip
+*.tar
+*.tar.gz
+
+# ── Model weights & checkpoints ──────────────────────────────
+weights/
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+*.h5
+
+# ── Output figures & results ─────────────────────────────────
+outputs/figures/
+outputs/predictions/
+outputs/results/
+*.png
+*.jpg
+*.jpeg
+# Exception: keep README images
+!docs/*.png
+!docs/*.jpg
+
+# ── Python cache ─────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
+*.pyc
 .Python
+
+# ── Virtual environments ──────────────────────────────────────
 venv/
-.venv/
 env/
+.env/
+.venv/
 
-# Jupyter
+# ── Jupyter checkpoints ───────────────────────────────────────
 .ipynb_checkpoints/
-*.ipynb_checkpoints
+*/.ipynb_checkpoints/
 
-# Data (don't commit large datasets)
-
-# Results (optional - you may want to commit these)
-# results/
-*.pth
-*.pkl
-
-# IDE
+# ── IDE files ─────────────────────────────────────────────────
 .idea/
 .vscode/
-*.swp
-*.swo
+*.iml
+*.suo
+*.user
 
-# OS
+# ── macOS ─────────────────────────────────────────────────────
 .DS_Store
-Thumbs.db
-data/chest_xray/
-models/*.keras
+.AppleDouble
+.LSOverride
+
+# ── Google Colab ──────────────────────────────────────────────
+*.ipynb_meta
+
+# ── Logs ──────────────────────────────────────────────────────
+logs/
+*.log
+runs/
+
+# ── Distribution / packaging ─────────────────────────────────
+dist/
+build/
+*.egg-info/
