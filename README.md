@@ -36,15 +36,16 @@ This project investigates whether models pretrained on **natural animal camoufla
 AI-final-project/
 ├── data/                    # Datasets (not tracked by Git)
 │   ├── DATA_DOWNLOAD_INSTRUCTIONS.txt
-│   ├── COD10K-v3/
+│   ├── COD10K-v3/           # COD10K
 │   ├── dataset-splitM/      # ACD1K
-│   └── CAMO-V.1.0-CVIU2019/
+│   └── CAMO-V.1.0-CVIU2019/ # CAMO
 ├── notebooks/
 │   ├── 01_EDA_Binger.ipynb
 │   ├── 02_Training_Yansong.ipynb
 │   └── 03_Evaluation_Sepehr.ipynb
 ├── src/
 │   ├── dataset.py           # Data loading & preprocessing pipeline
+│   ├── generate_splits.py   # Fixed split index generator
 │   ├── model.py             # SINet-V2 architecture
 │   ├── train.py             # Training loop
 │   └── evaluate.py          # Evaluation metrics
