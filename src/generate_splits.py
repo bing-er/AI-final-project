@@ -7,8 +7,8 @@ Generates and saves the following index files to splits/:
   hold_out_acd1k.json      — 100 ACD1K images held out permanently
   hold_out_cod10k.json     — 50 COD10K test images held out permanently
   hold_out_noise.json      — 50 noise image placeholders
-  acd1k_splits.json        — 70/15/15 train/val/test for remaining ACD1K
-  cod10k_splits.json       — 70/15/15 train/val/test for remaining COD10K
+  acd1k_splits.json  — ACD1K train (748) and val (230) filenames
+  cod10k_splits.json — COD10K train (5950) and val (3950) filenames
 
 All splits use SEED=42. Run ONCE before any training begins and
 commit all JSON files to the repository.
@@ -26,7 +26,6 @@ import random
 import argparse
 import numpy as np
 from pathlib import Path
-from sklearn.model_selection import train_test_split
 
 # ── Fixed seed — never change this ──────────────────────────────────────────
 SEED = 42
@@ -35,11 +34,6 @@ SEED = 42
 N_HOLDOUT_ACD1K  = 100
 N_HOLDOUT_COD10K = 50
 N_HOLDOUT_NOISE  = 50
-
-# ── Train/Val/Test ratio for remaining images ────────────────────────────────
-TRAIN_RATIO = 0.70
-VAL_RATIO   = 0.15
-TEST_RATIO  = 0.15
 
 # ── Image extensions ─────────────────────────────────────────────────────────
 IMG_EXTS = {'.jpg', '.jpeg', '.png', '.bmp'}
@@ -87,8 +81,6 @@ def stratified_holdout_acd1k(image_dir, n=N_HOLDOUT_ACD1K, seed=SEED):
             terrain_map['snow'].append(f)
         else:
             terrain_map['other'].append(f)
-
-    labeled = sum(len(v) for k, v in terrain_map.items() if k != 'other')
 
     # Check if stratification is meaningful (>10% of files have terrain labels)
     labeled = sum(len(v) for k, v in terrain_map.items() if k != 'other')
@@ -139,41 +131,6 @@ def random_holdout_cod10k(test_image_dir, n=N_HOLDOUT_COD10K, seed=SEED):
     holdout   = sorted(random.sample(all_files, n))
     remaining = sorted([f for f in all_files if f not in holdout])
     return holdout, remaining
-
-
-def generate_train_val_test(file_list, train_ratio=TRAIN_RATIO,
-                            val_ratio=VAL_RATIO, seed=SEED):
-    """
-    Split a list of filenames into train/val/test using fixed ratios.
-    Uses sklearn train_test_split with stratify=None (no class labels).
-
-    Returns: {'train': [...], 'val': [...], 'test': [...]}
-    """
-    set_seed(seed)
-    test_ratio = 1.0 - train_ratio - val_ratio
-
-    # First split: train vs (val + test)
-    train, val_test = train_test_split(
-        file_list,
-        train_size=train_ratio,
-        random_state=seed,
-        shuffle=True,
-    )
-
-    # Second split: val vs test (from the val+test pool)
-    relative_val = val_ratio / (val_ratio + test_ratio)
-    val, test = train_test_split(
-        val_test,
-        train_size=relative_val,
-        random_state=seed,
-        shuffle=True,
-    )
-
-    return {
-        'train': sorted(train),
-        'val':   sorted(val),
-        'test':  sorted(test),
-    }
 
 
 def save_json(data, path):
@@ -261,30 +218,26 @@ def main():
     print("=" * 60)
 
     # ── Dataset paths ──────────────────────────────────────────────────────
-    ACD1K_TRAIN_IMAGES  = data_root / 'dataset-splitM/Training/images'
-    ACD1K_TEST_IMAGES   = data_root / 'dataset-splitM/Testing/images'
-    COD10K_TEST_IMAGES  = data_root / 'COD10K-v3/Test/Image'
+    ACD1K_TRAIN_IMAGES = data_root / 'dataset-splitM/Training/images'
+    ACD1K_TEST_IMAGES = data_root / 'dataset-splitM/Testing/images'
     COD10K_TRAIN_IMAGES = data_root / 'COD10K-v3/Train/Image'
+    COD10K_TEST_IMAGES = data_root / 'COD10K-v3/Test/Image'
 
     # ─────────────────────────────────────────────────────────────────────────
     # STEP 1 — ACD1K hold-out (100 images from training split)
     # ─────────────────────────────────────────────────────────────────────────
     print(f"\n[Step 1] ACD1K hold-out ({N_HOLDOUT_ACD1K} images)")
-    acd1k_holdout, acd1k_remaining_train = stratified_holdout_acd1k(
-        ACD1K_TRAIN_IMAGES, n=N_HOLDOUT_ACD1K
+    acd1k_holdout, acd1k_remaining_test = stratified_holdout_acd1k(
+        ACD1K_TEST_IMAGES, n=N_HOLDOUT_ACD1K
     )
-
-    # Also get test filenames (kept separate, not split further)
-    acd1k_test_files = get_image_filenames(ACD1K_TEST_IMAGES)
 
     save_json(
         {
-            'description': 'ACD1K hold-out set — 100 images from training '
-                           'partition. Held out permanently before any '
-                           'training. Never used for training, validation, '
-                           'or hyperparameter tuning.',
+            'description': 'ACD1K hold-out set — 100 images from official '
+                           'test partition (330 total). Remaining 230 test '
+                           'images used as validation during training.',
             'seed':        SEED,
-            'source':      'ACD1K Training partition',
+            'source':      'ACD1K Testing/images partition',
             'n':           len(acd1k_holdout),
             'files':       acd1k_holdout,
         },
@@ -295,19 +248,19 @@ def main():
     # STEP 2 — COD10K hold-out (50 images from train partition)
     # ─────────────────────────────────────────────────────────────────────────
     print(f"\n[Step 2] COD10K hold-out ({N_HOLDOUT_COD10K} images)")
-    cod10k_holdout, cod10k_remaining_train = random_holdout_cod10k(
-        COD10K_TRAIN_IMAGES, n=N_HOLDOUT_COD10K
+    cod10k_holdout, cod10k_remaining_test = random_holdout_cod10k(
+        COD10K_TEST_IMAGES, n=N_HOLDOUT_COD10K
     )
-    print(f"  Sampled {len(cod10k_holdout)} from COD10K train partition "
-          f"({len(cod10k_remaining_train)} remaining in train)")
+    print(f"  Sampled {len(cod10k_holdout)} from COD10K test partition "
+          f"({len(cod10k_remaining_test)} remaining as val)")
 
     save_json(
         {
-            'description': 'COD10K hold-out set — 50 images from train '
-                           'partition. Held out permanently for final '
-                           'cross-domain evaluation.',
+            'description': 'COD10K hold-out set — 50 images from official '
+                           'test partition (4,000 total). Remaining ~3,950 '
+                           'test images used as validation during training.',
             'seed':        SEED,
-            'source':      'COD10K Train/Image partition',
+            'source':      'COD10K Test/Image partition',
             'n':           len(cod10k_holdout),
             'files':       cod10k_holdout,
         },
@@ -348,63 +301,56 @@ def main():
     )
 
     # ─────────────────────────────────────────────────────────────────────────
-    # STEP 4 — ACD1K train/val/test splits (from remaining after hold-out)
+    # STEP 4 — ACD1K val split (remaining test images after hold-out)
     # ─────────────────────────────────────────────────────────────────────────
-    print(f"\n[Step 4] ACD1K train/val/test splits "
-          f"({len(acd1k_remaining_train)} remaining training images)")
-
-    acd1k_splits = generate_train_val_test(acd1k_remaining_train)
+    print(f"\n[Step 4] ACD1K val split "
+          f"({len(acd1k_remaining_test)} remaining test images)")
 
     save_json(
         {
-            'description': 'ACD1K fixed train/val/test splits. '
-                           'Generated from remaining training images '
-                           'after hold-out removal. '
-                           'Shared identically across Experiments 1, 2, 3.',
-            'seed':        SEED,
-            'ratios':      {'train': TRAIN_RATIO,
-                            'val':   VAL_RATIO,
-                            'test':  TEST_RATIO},
-            'counts':      {k: len(v) for k, v in acd1k_splits.items()},
-            'train':       acd1k_splits['train'],
-            'val':         acd1k_splits['val'],
-            'test':        acd1k_splits['test'],
-            'note':        'Official Testing/images partition (330 images) '
-                           'is separate and not included here.',
+            'description': 'ACD1K validation set — official test images '
+                           'remaining after hold-out removal. '
+                           'Used for early stopping and hyperparameter '
+                           'tuning across all three experiments.',
+            'seed': SEED,
+            'source': 'ACD1K Testing/images partition (minus hold-out)',
+            'counts': {'val': len(acd1k_remaining_test)},
+            'val': sorted(acd1k_remaining_test),
+            'train': sorted(get_image_filenames(ACD1K_TRAIN_IMAGES)),
         },
         splits_dir / 'acd1k_splits.json'
     )
 
     # ─────────────────────────────────────────────────────────────────────────
-    # STEP 5 — COD10K train/val/test splits (from remaining after hold-out)
+    # STEP 5 — COD10K val split (remaining test images after hold-out)
     # ─────────────────────────────────────────────────────────────────────────
-    print(f"\n[Step 5] COD10K train/val/test splits")
+    print(f"\n[Step 5] COD10K val split "
+          f"({len(cod10k_remaining_test)} remaining test images)")
 
-    # Remove noise hold-out files from the training pool
-    noise_set = set(noise_holdout)
-    cod10k_clean = [f for f in cod10k_remaining_train if f not in noise_set]
-    print(f"  After removing noise hold-out: {len(cod10k_clean)} images "
-          f"({len(cod10k_remaining_train) - len(cod10k_clean)} noise removed)")
+    cod10k_noise_set = set(noise_holdout)
+    cod10k_remaining_clean = [f for f in cod10k_remaining_test
+                              if f not in cod10k_noise_set]
 
-    cod10k_train_files = cod10k_clean
-    cod10k_splits = generate_train_val_test(cod10k_train_files)
+    # ADD this — remove noise from train as well
+    cod10k_all_train = get_image_filenames(COD10K_TRAIN_IMAGES)
+    cod10k_train_clean = [f for f in cod10k_all_train
+                          if f not in cod10k_noise_set]
+
+    print(f"  After removing noise hold-out: "
+          f"{len(cod10k_remaining_clean)} val images, "
+          f"{len(cod10k_train_clean)} train images")
 
     save_json(
         {
-            'description': 'COD10K fixed train/val/test splits. '
-                           'Generated from Train/Image partition after '
-                           'removing 50 hold-out images. '
-                           'Shared identically across Experiments 2 and 3.',
+            'description': 'COD10K splits — train is full official train '
+                           'minus 50 noise images. Val is official test '
+                           'minus hold-out and noise.',
             'seed': SEED,
-            'ratios': {'train': TRAIN_RATIO,
-                       'val': VAL_RATIO,
-                       'test': TEST_RATIO},
-            'counts': {k: len(v) for k, v in cod10k_splits.items()},
-            'train': cod10k_splits['train'],
-            'val': cod10k_splits['val'],
-            'test': cod10k_splits['test'],
-            'note': 'COD10K hold-out (50 images) was taken from '
-                    'Train/Image partition before this split was generated.',
+            'source': 'COD10K partitions',
+            'counts': {'train': len(cod10k_train_clean),
+                       'val': len(cod10k_remaining_clean)},
+            'val': sorted(cod10k_remaining_clean),
+            'train': sorted(cod10k_train_clean),
         },
         splits_dir / 'cod10k_splits.json'
     )
@@ -421,20 +367,17 @@ def main():
     print("Split generation complete.")
     print("=" * 60)
     print()
-    print("Final validation set (200 images total):")
-    print(f"  ACD1K hold-out  : {len(acd1k_holdout):>4} images")
-    print(f"  COD10K hold-out : {len(cod10k_holdout):>4} images")
-    print(f"  Noise hold-out  : {N_HOLDOUT_NOISE:>4} images (populate manually)")
+    print("ACD1K splits:")
+    print(f"  Train : {len(get_image_filenames(ACD1K_TRAIN_IMAGES)):>4} images "
+          f"(full official train)")
+    print(f"  Val   : {len(acd1k_remaining_test):>4} images "
+          f"(official test minus hold-out)")
     print()
-    print("ACD1K working splits (after hold-out):")
-    print(f"  Train : {len(acd1k_splits['train']):>4} images")
-    print(f"  Val   : {len(acd1k_splits['val']):>4} images")
-    print(f"  Test  : {len(acd1k_splits['test']):>4} images")
-    print()
-    print("COD10K working splits:")
-    print(f"  Train : {len(cod10k_splits['train']):>4} images")
-    print(f"  Val   : {len(cod10k_splits['val']):>4} images")
-    print(f"  Test  : {len(cod10k_splits['test']):>4} images")
+    print("COD10K splits:")
+    print(f"  Train : {len(cod10k_train_clean):>4} images "
+          f"(official train minus noise)")
+    print(f"  Val   : {len(cod10k_remaining_clean):>4} images "
+          f"(official test minus hold-out and noise)")
     print()
     print("  1. Noise hold-out uses NonCAM images from COD10K — no action needed")
 
