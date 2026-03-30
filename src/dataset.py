@@ -155,7 +155,7 @@ def get_train_transforms(mean, std, input_size=INPUT_SIZE):
         ),
         A.Normalize(mean=mean, std=std),
         ToTensorV2(),
-    ])
+    ], is_check_shapes=False)
 
 
 def get_val_transforms(mean, std, input_size=INPUT_SIZE):
@@ -164,7 +164,7 @@ def get_val_transforms(mean, std, input_size=INPUT_SIZE):
         A.Resize(input_size, input_size),
         A.Normalize(mean=mean, std=std),
         ToTensorV2(),
-    ])
+    ], is_check_shapes=False)
 
 
 # ──────────────────────────────────────────────────────────────────────────────
