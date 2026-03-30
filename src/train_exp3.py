@@ -195,7 +195,7 @@ def train(args):
         oversample_acd1k=True, seed=args.seed, splits_dir=args.splits_dir,
     )
     val_loader = build_dataloader(
-        args.data_root, condition='joint', split='val',
+        args.data_root, condition='acd1k', split='val',
         batch_size=args.batch_size, num_workers=args.num_workers,
         oversample_acd1k=False, seed=args.seed, splits_dir=args.splits_dir,
     )
@@ -300,7 +300,7 @@ def parse_args():
 
     # ── Training settings ─────────────────────────────────────────────────
     p.add_argument('--epochs',      type=int,   default=50)
-    p.add_argument('--batch_size',  type=int,   default=8)
+    p.add_argument('--batch_size',  type=int,   default=16)
     p.add_argument('--patience',    type=int,   default=10,
                    help='Early stopping patience (epochs)')
     p.add_argument('--num_workers', type=int,   default=2)
