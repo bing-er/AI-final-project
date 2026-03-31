@@ -6,8 +6,8 @@
   "acd1k_w": 8.0,
   "weight_decay": 0.0001,
   "epochs": 50,
-  "batch_size": 8,
-  "accum_steps": 2,
+  "batch_size": 16,
+  "accum_steps": 1,
   "patience": 10,
   "num_workers": 2,
   "seed": 42
