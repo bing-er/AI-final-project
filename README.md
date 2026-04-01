@@ -58,8 +58,7 @@ AI-final-project/
 │   └── CAMO-V.1.0-CVIU2019/       # CAMO dataset
 ├── notebooks/
 │   ├── 01_EDA_Binger.ipynb        # Exploratory data analysis
-│   ├── 02_train_exp3_Binger.ipynb # Experiment 3 joint training
-│   └── 03_evaluate_Binger.ipynb   # Experiment 3 evaluation
+│   └── 02_train_exp3_Binger.ipynb # Experiment 3 joint training
 ├── src/
 │   ├── __init__.py                # Package root
 │   ├── dataset.py                 # Data loading & preprocessing pipeline
