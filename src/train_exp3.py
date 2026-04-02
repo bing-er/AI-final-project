@@ -28,7 +28,6 @@ from pathlib import Path
 
 import numpy as np
 import torch
-import torch.nn as nn
 from torch.optim import AdamW
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from transformers import SegformerForSemanticSegmentation

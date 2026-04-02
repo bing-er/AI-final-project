@@ -41,30 +41,51 @@ All three experiments are evaluated on the **same 200-image held-out final test 
 
 ```
 AI-final-project/
-├── data/                          # Datasets (not tracked by Git)
-│   ├── DATA_DOWNLOAD_INSTRUCTIONS.txt
-│   ├── COD10K-v3/                 # COD10K dataset
-│   ├── dataset-splitM/            # ACD1K dataset
-│   └── CAMO-V.1.0-CVIU2019/       # CAMO dataset
+├── data/                              # Datasets — not tracked by Git (see DATA_DOWNLOAD_INSTRUCTIONS.txt)
+│   ├── DATA_DOWNLOAD_INSTRUCTIONS.txt # Step-by-step dataset download guide
+│   ├── COD10K-v3/                     # COD10K: 10,000 animal camouflage images
+│   ├── dataset-splitM/                # ACD1K: 1,078 military camouflage images
+│   └── CAMO-V.1.0-CVIU2019/           # CAMO: 1,250 mixed camouflage images
+├── doc/
+│   └── 01_EDA_Binger.pdf              # EDA notebook exported as PDF for reference
 ├── notebooks/
-│   ├── 01_EDA_Binger.ipynb        # Exploratory data analysis
-│   └── 02_train_exp3_Binger.ipynb # Experiment 3 joint training
-├── src/
-│   ├── __init__.py                # Package root
-│   ├── dataset.py                 # Data loading & preprocessing pipeline
-│   ├── evaluate.py                # Evaluation metrics
-│   └── generate_splits.py         # Fixed split index generator
-├── splits/                        # Version-controlled split index files
-│   ├── acd1k_train.json
-│   ├── acd1k_val.json
-│   ├── final_test_acd1k.json
-│   ├── final_test_cod10k.json
-│   └── final_test_noise.json
+│   ├── 01_EDA_Binger.ipynb            # EDA — class distribution, resolution, mask coverage, normalization constants
+│   └── 02_train_exp3_Binger.ipynb     # Experiment 3 — joint training sweep + final run on A100
 ├── outputs/
-│   └── figures/                   # EDA and result figures (not tracked)
-├── .gitignore
-├── README.md
-└── requirements.txt
+│   └── exp3/
+│       ├── final/                     # Final run (lr=6e-5, T4, early stopped)
+│       │   ├── config.json            # Training hyperparameters
+│       │   └── history.json           # Per-epoch metrics
+│       ├── final_lr1e4/               # Final run (lr=1e-4, A100, early stopped @ ep35)
+│       │   ├── config.json
+│       │   └── history.json
+│       ├── final_lr6e5_50ep/          # Definitive final run (lr=6e-5, A100) — mIoU=0.8780 ✅
+│       │   ├── config.json
+│       │   └── history.json
+│       ├── sweep_lr1e4/               # Sweep run 1: lr=1e-4, 20 epochs — mIoU=0.8735
+│       │   ├── config.json
+│       │   └── history.json
+│       ├── sweep_lr1e5/               # Sweep run 3: lr=1e-5, 20 epochs — mIoU=0.8643
+│       │   ├── config.json
+│       │   └── history.json
+│       └── sweep_lr6e5/               # Sweep run 2: lr=6e-5, 20 epochs — mIoU=0.8805
+│           ├── config.json
+│           └── history.json
+│   └── figures/                       # EDA figures
+├── splits/                            # Fixed split index files — version controlled, generated once with seed=42
+│   ├── acd1k_splits.json              # ACD1K: 748 train / 230 val filenames
+│   ├── cod10k_splits.json             # COD10K: 5,950 train / 3,950 val filenames
+│   ├── hold_out_acd1k.json            # 100 ACD1K hold-out images (from official test partition)
+│   ├── hold_out_cod10k.json           # 50 COD10K hold-out images (from official test partition)
+│   └── hold_out_noise.json            # 50 NonCAM distractor images (from COD10K train partition)
+├── src/
+│   ├── __init__.py                    # Package root
+│   ├── dataset.py                     # Data loading, augmentation, DataLoader factory for all 3 conditions
+│   ├── evaluate.py                    # Evaluation metrics: mIoU, F1/Dice, MAE, FPR
+│   └── generate_splits.py             # Generates all split JSON files — run once before training
+├── .gitignore                         # Excludes data/, checkpoints, figures, __pycache__
+├── README.md                          # Project documentation
+└── requirements.txt                   # Python dependencies
 ```
 
 ---

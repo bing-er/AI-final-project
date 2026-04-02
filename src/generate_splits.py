@@ -4,20 +4,30 @@ COMP 9130 Capstone: Military Camouflage Object Detection
 Author: Binger Yu (Data & Preprocessing Lead)
 
 Generates and saves the following index files to splits/:
-  hold_out_acd1k.json      — 100 ACD1K images held out permanently
-  hold_out_cod10k.json     — 50 COD10K test images held out permanently
-  hold_out_noise.json      — 50 noise image placeholders
-  acd1k_splits.json  — ACD1K train (748) and val (230) filenames
-  cod10k_splits.json — COD10K train (5950) and val (3950) filenames
 
-All splits use SEED=42. Run ONCE before any training begins and
-commit all JSON files to the repository.
+  Hold-out sets (200 images total — never seen during training):
+    hold_out_acd1k.json   — 100 images from ACD1K official test partition (330 total)
+    hold_out_cod10k.json  — 50 images from COD10K official test partition (4,000 total)
+    hold_out_noise.json   — 50 NonCAM distractor images from COD10K train partition
+
+  Working splits (used for training and validation):
+    acd1k_splits.json     — ACD1K train (748, full official train)
+                            + val (230 = 330 official test minus 100 hold-out)
+    cod10k_splits.json    — COD10K train (5,950 = 6,000 official train minus 50 noise)
+                            + val (3,950 = 4,000 official test minus 50 hold-out)
+
+  CAMO uses its original official split (1,000 train / 250 test) directly —
+  no hold-out or custom split required.
+
+All splits are generated with SEED=42 and must never be regenerated.
+Run ONCE before any training begins and commit all JSON files to the repository.
+Teammates must pull these files before starting any experiment.
 
 Usage:
     python src/generate_splits.py data/ [--splits_dir splits/]
 
 Requirements:
-    pip install numpy scikit-learn
+    pip install numpy
 """
 
 import os

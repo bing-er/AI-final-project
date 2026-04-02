@@ -5,14 +5,15 @@ Author: Binger Yu (Data & Preprocessing Lead)
 
 Supports three dataset conditions used across three experiments:
 
-  Condition 'acd1k'  : ACD1K only
-      → Experiment 1 (SINetV2 CNN baseline trained on military data only)
+  Condition 'acd1k'  : ACD1K only             (748 train / 230 val)
+      → Experiment 1 (SINetV2) may use 352×352 — pass input_size=352 to
+        get_train_transforms() / get_val_transforms() if needed.
       → Experiment 2 Stage 2 (ACD1K fine-tuning after COD10K pretraining)
 
-  Condition 'cod10k' : COD10K only
+  Condition 'cod10k' : COD10K only             (5,950 train / 3,950 val)
       → Experiment 2 Stage 1 (COD10K pretraining for SegFormer-B2)
 
-  Condition 'joint'  : COD10K + CAMO + ACD1K
+  Condition 'joint'  : COD10K + CAMO + ACD1K   (7,698 train / 4,430 val)
       → Experiment 3 (SegFormer-B2 joint training across all three datasets)
 
 Note on input resolution:
