@@ -136,33 +136,35 @@ notebooks/01_EDA_Binger.ipynb
 
 ```bash
 # Train SINetV2 on ACD1K only
-python src/train_exp1.py --epochs 100 --batch_size 16
+# python src/train_exp1.py --epochs 100 --batch_size 16
 
 # Evaluate on final test set
-python src/evaluate.py --weights outputs/exp1_best.pth --experiment 1
+# python src/evaluate.py --weights outputs/exp1_best.pth --experiment 1
 ```
 
 ### Experiment 2 — SegFormer Transfer Learning (Sepehr)
 
 ```bash
 # Stage 1: Pretrain on COD10K
-python src/train_exp2.py --stage 1 --epochs 50 --batch_size 16
+# python src/train_exp2.py --stage 1 --epochs 50 --batch_size 16
 
 # Stage 2: Fine-tune on ACD1K
-python src/train_exp2.py --stage 2 --weights outputs/exp2_stage1_best.pth --epochs 50
+# python src/train_exp2.py --stage 2 --weights outputs/exp2_stage1_best.pth --epochs 50
 
 # Evaluate on final test set
-python src/evaluate.py --weights outputs/exp2_best.pth --experiment 2
+# python src/evaluate.py --weights outputs/exp2_best.pth --experiment 2
+
+
+# Evaluate on final test set
+# See notebooks/03_evaluate.ipynb
 ```
 
 ### Experiment 3 — SegFormer Joint Training (Binger)
 
 ```bash
 # Train on COD10K + CAMO + ACD1K jointly
-# See notebooks/02_train_exp3_Binger.ipynb (Google Colab, A100 GPU)
+notebooks/02_train_exp3_Binger.ipynb
 
-# Evaluate on final test set
-# See notebooks/03_evaluate_Binger.ipynb
 ```
 
 
