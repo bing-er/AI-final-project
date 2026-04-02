@@ -5,16 +5,6 @@
 
 ---
 
-## Team
-
-| Member | Role | Specific Responsibilities |
-|---|---|---|
-| Binger Yu | Data & Preprocessing Lead + Experiment 3 Lead | - Generated and version-controlled final test set hold-out index files. Conducted full EDA (`01_EDA_Binger.ipynb`). <br/>- Designed and implemented the complete preprocessing pipeline (`src/dataset.py`): mask binarization, Albumentations augmentation, and `WeightedRandomSampler` for ACD1K oversampling. <br/>- Implemented `src/generate_splits.py` for reproducible splits with fixed random seed across all three experiments. Implemented dataloaders for all three experimental conditions. <br/>- Led Experiment 3 (joint training): hyperparameter tuning, full final training, and final test set evaluation. <br/>- Maintains GitHub repository structure, `README.md`, `requirements.txt`, `.gitignore`, and dataset download instructions. <br/>- Contributes to proposal and report (Background, Dataset, Timeline, Team Roles, Conclusion, Contributions, Acknowledgements). |
-| Yansong Jia | Methodology Lead + Experiment 1 Lead | - Owns the overall methodology: defines and documents the experimental design, fixed hyperparameters, augmentation policy, and evaluation protocol. Revises methodology if issues arise during implementation. <br/>- Tracks project progress across all three experiments; facilitates cross-member communication and knowledge transfer. <br/>- Leads Experiment 1: implements and trains SINetV2 on ACD1K (CNN baseline), performs hyperparameter tuning, and evaluates on the final test set. <br/>- Contributes to proposal and report (Background, Research Gap, Methodology, Discussion — Ethical Considerations). |
-| Sepehr Mansouri | Experiment 2 Lead + Evaluation Lead | - Leads Experiment 2: implements and trains the SegFormer transfer learning pipeline (COD10K pretraining → ACD1K fine-tuning), performs hyperparameter tuning for both stages, and evaluates on the final test set. <br/>- Develops and maintains all evaluation scripts: mIoU, F1/Dice, MAE, FPR on noise images, terrain-stratified breakdowns, and cross-experiment comparison visualisations. <br/>- Leads system integration and supports debugging across all three pipelines. <br/>- Contributes to proposal and report (Success Criteria, Experiments & Results, Discussion — Analysis of Results and Failure Cases & Limitations). |
-
----
-
 ## Project Overview
 
 This project investigates whether cross-domain transfer learning from **natural animal camouflage** (COD10K) can improve pixel-level segmentation of **camouflaged military personnel** (ACD1K). We compare a CNN baseline (SINetV2) against a Transformer-based architecture (SegFormer-B2) across three experimental conditions and evaluate cross-environment generalisation across forest, desert/rocky, and snow terrains.
@@ -153,6 +143,49 @@ python src/evaluate.py --weights outputs/exp2_best.pth --experiment 2
 # Evaluate on final test set
 # See notebooks/03_evaluate_Binger.ipynb
 ```
+
+
+## Team
+
+| Member | Role | Specific Responsibilities |
+|---|---|---|
+| Binger Yu | Data & Preprocessing Lead + Experiment 3 Lead | - Generated and version-controlled final test set hold-out index files. Conducted full EDA (`01_EDA_Binger.ipynb`). <br/>- Designed and implemented the complete preprocessing pipeline (`src/dataset.py`): mask binarization, Albumentations augmentation, and `WeightedRandomSampler` for ACD1K oversampling. <br/>- Implemented `src/generate_splits.py` for reproducible splits with fixed random seed across all three experiments. Implemented dataloaders for all three experimental conditions. <br/>- Led Experiment 3 (joint training): hyperparameter tuning, full final training, and final test set evaluation. <br/>- Maintains GitHub repository structure, `README.md`, `requirements.txt`, `.gitignore`, and dataset download instructions. <br/>- Contributes to proposal and report (Background, Dataset, Timeline, Team Roles, Conclusion, Contributions, Acknowledgements). |
+| Yansong Jia | Methodology Lead + Experiment 1 Lead | - Owns the overall methodology: defines and documents the experimental design, fixed hyperparameters, augmentation policy, and evaluation protocol. Revises methodology if issues arise during implementation. <br/>- Tracks project progress across all three experiments; facilitates cross-member communication and knowledge transfer. <br/>- Leads Experiment 1: implements and trains SINetV2 on ACD1K (CNN baseline), performs hyperparameter tuning, and evaluates on the final test set. <br/>- Contributes to proposal and report (Background, Research Gap, Methodology, Discussion — Ethical Considerations). |
+| Sepehr Mansouri | Experiment 2 Lead + Evaluation Lead | - Leads Experiment 2: implements and trains the SegFormer transfer learning pipeline (COD10K pretraining → ACD1K fine-tuning), performs hyperparameter tuning for both stages, and evaluates on the final test set. <br/>- Develops and maintains all evaluation scripts: mIoU, F1/Dice, MAE, FPR on noise images, terrain-stratified breakdowns, and cross-experiment comparison visualisations. <br/>- Leads system integration and supports debugging across all three pipelines. <br/>- Contributes to proposal and report (Success Criteria, Experiments & Results, Discussion — Analysis of Results and Failure Cases & Limitations). |
+
+---
+
+## Project Status
+
+Last updated: April 2, 2026
+
+### Implementation Progress
+
+| Component | Owner | Status |
+|---|---|---|
+| Dataset acquisition (COD10K, ACD1K, CAMO) | Binger | ✅ Complete |
+| EDA notebook (`notebooks/01_EDA_Binger.ipynb`) | Binger | ✅ Complete |
+| Preprocessing pipeline (`src/dataset.py`) | Binger | ✅ Complete |
+| Split generator (`src/generate_splits.py`) | Binger | ✅ Complete |
+| Split index files (`splits/`) | Binger | ✅ Complete |
+| Experiment 3 training (`src/train_exp3.py`) | Binger | ✅ Complete |
+| Experiment 3 notebook (`notebooks/02_train_exp3_Binger.ipynb`) | Binger | ✅ Complete |
+| Evaluation script (`src/evaluate.py`) | Binger | ✅ Complete |
+| Experiment 1 — SINetV2 baseline | Yansong | 🔄 In progress |
+| Experiment 2 — SegFormer transfer | Sepehr | 🔄 In progress |
+| Final evaluation on 200-image hold-out | Sepehr | ⏳ Pending |
+| Final report | All | ⏳ In progress |
+
+### Experiment 3 Results (SegFormer-B2, Joint Training)
+
+| Metric | Value | Target |
+|---|---|---|
+| val mIoU | **0.8780** | ≥ 0.65 ✅ |
+| val F1 | **0.8721** | ≥ 0.75 ✅ |
+| val MAE | **0.0338** | lower is better ✅ |
+
+Best checkpoint: `outputs/exp3/final_lr6e5_50ep/best_model.pth`  
+Hardware: Google Colab A100 | LR: 6e-5 | Batch: 16 | Early stop: epoch 27
 
 ---
 
