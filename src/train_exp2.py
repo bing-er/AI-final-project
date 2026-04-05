@@ -90,7 +90,7 @@ def build_model(stage1_weights=None):
 
     if stage1_weights is not None:
         print(f"[Model] Loading Stage-1 weights from {stage1_weights}")
-        ckpt = torch.load(stage1_weights, map_location='cpu')
+        ckpt = torch.load(stage1_weights, map_location='cpu', weights_only=False)
         state_dict = ckpt['state_dict'] if 'state_dict' in ckpt else ckpt
         model.load_state_dict(state_dict, strict=True)
         epoch_str = str(ckpt.get('epoch', '?'))
