@@ -1,0 +1,17 @@
+{
+  "stage": 2,
+  "data_root": "data/",
+  "splits_dir": "splits/",
+  "output_dir": "outputs/exp2/sweep_s2_lr1e5",
+  "encoder_lr": 0.0001,
+  "head_lr": 0.001,
+  "lr": 1e-05,
+  "stage1_weights": "outputs/exp2/stage1/best_model.pth",
+  "weight_decay": 0.0001,
+  "epochs": 20,
+  "batch_size": 16,
+  "accum_steps": 1,
+  "patience": 10,
+  "num_workers": 2,
+  "seed": 42
+}
