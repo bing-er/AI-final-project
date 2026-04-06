@@ -8,7 +8,7 @@ data/*
 # ── Model weights & checkpoints ──────────────────────────────
 weights/
 checkpoints/
-*.pth
+# *.pth
 *.pt
 *.ckpt
 *.h5
