@@ -56,10 +56,10 @@ AI-final-project/
 │   └── 03_evaluate_Sepehr.ipynb       # Final evaluation script
 ├── outputs/
 │   └── exp1/
-│       ├── final/                     # Final run (lr=6e-5, T4, early stopped)
-│       ├── sweep_lr1e4/               # Sweep run 1: lr=1e-4, 30 epochs — mIoU=
-│       ├── sweep_lr1e5/               # Sweep run 3: lr=1e-5, 20 epochs — mIoU=
-│       └── sweep_lr6e5/               # Sweep run 2: lr=6e-5, 20 epochs — mIoU=
+│       ├── final/                     # Final run (lr=6e-5, 60 epochs, early stopped @ ep7) — mIoU=0.6174)
+│       ├── sweep_lr1e4/               # Sweep run 1: lr=1e-4, 30 epochs — mIoU=0.5981
+│       ├── sweep_lr1e5/               # Sweep run 3: lr=1e-5, 20 epochs — mIoU=0.5865
+│       └── sweep_lr6e5/               # Sweep run 2: lr=6e-5, 20 epochs — mIoU=0.5322
 │   └── exp2/
 │       ├── eval/                     
 │       ├── final/                     
