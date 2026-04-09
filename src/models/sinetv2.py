@@ -175,19 +175,20 @@ class SINetV2(nn.Module):
         Returns:
             Logits tensor of shape [B, 1, H, W].
         """
-        x = self.stem(x)
+        stem = self.stem(x)          # [B, C, H, W]
 
-        x, s1 = self.enc1(x)  # 1/2
-        x, s2 = self.enc2(x)  # 1/4
-        x, s3 = self.enc3(x)  # 1/8
-        x, s4 = self.enc4(x)  # 1/16
+        x, s1 = self.enc1(stem)      # 1/2
+        x, s2 = self.enc2(x)         # 1/4
+        x, s3 = self.enc3(x)         # 1/8
+        x, _  = self.enc4(x)         # 1/16
 
         x = self.bottleneck(x)
 
-        x = self.dec4(x, s4)
-        x = self.dec3(x, s3)
-        x = self.dec2(x, s2)
-        x = self.dec1(x, s1)
+        # Decoder uses highest-level skip from s3, then s2, s1, and stem.
+        x = self.dec4(x, s3)
+        x = self.dec3(x, s2)
+        x = self.dec2(x, s1)
+        x = self.dec1(x, stem)
 
         logits = self.pred(x)
         return logits
