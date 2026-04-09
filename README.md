@@ -194,16 +194,11 @@ python src/engine_exp1.py --epochs 60 --batch_size 8
 
 ```bash
 # Stage 1: Pretrain on COD10K
-# python src/train_exp2.py --stage 1 --epochs 50 --batch_size 8
 
 # Stage 2: Fine-tune on ACD1K
-# python src/train_exp2.py --stage 2 --weights outputs/exp2_stage1_best.pth --epochs 50
 
 # Evaluate on final test set
-# python src/evaluate.py --weights outputs/exp2_best.pth --experiment 2
 
-# Evaluate on final test set
-# See notebooks/03_evaluate.ipynb
 ```
 
 ### Experiment 3 — SegFormer Joint Training (Binger)
