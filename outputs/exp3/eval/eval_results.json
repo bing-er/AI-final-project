@@ -1,0 +1,1444 @@
+{
+  "experiment": "exp3",
+  "checkpoint": "outputs/exp3/final/best_model.pth",
+  "summary": [
+    {
+      "label": "ACD1K",
+      "n": 100,
+      "mIoU_mean": 0.8615151259792522,
+      "mIoU_std": 0.11697738713957205,
+      "F1_mean": 0.8572679624919423,
+      "F1_std": 0.17381343055576334,
+      "MAE_mean": 0.046634716941043736,
+      "MAE_std": 0.048914687254531616
+    },
+    {
+      "label": "COD10K",
+      "n": 50,
+      "mIoU_mean": 0.863363299902463,
+      "mIoU_std": 0.18010258366955662,
+      "F1_mean": 0.7926129841480694,
+      "F1_std": 0.3238080560120096,
+      "MAE_mean": 0.019295228668406706,
+      "MAE_std": 0.028144271760799148
+    },
+    {
+      "label": "NOISE",
+      "n": 50,
+      "mIoU_mean": 0.9348979190357971,
+      "mIoU_std": 0.17755048462089765,
+      "F1_mean": 0.8800000006692116,
+      "F1_std": 0.32496153437320485,
+      "MAE_mean": 0.010450635833321939,
+      "MAE_std": 0.050242681874787434
+    }
+  ],
+  "per_image": {
+    "acd1k": [
+      {
+        "mIoU": 0.9609529746873339,
+        "F1": 0.9633505679112243,
+        "MAE": 0.008734040893614292,
+        "filename": "image1003.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.894660104828778,
+        "F1": 0.9390674352997328,
+        "MAE": 0.05747842416167259,
+        "filename": "image1008.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.954145870676157,
+        "F1": 0.9575243147664452,
+        "MAE": 0.010905072093009949,
+        "filename": "image504.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8627305408136459,
+        "F1": 0.8810043471213315,
+        "MAE": 0.05154679715633392,
+        "filename": "image505.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9422987313338038,
+        "F1": 0.9449315297272685,
+        "MAE": 0.010994186624884605,
+        "filename": "image506.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9383418190528324,
+        "F1": 0.9397380360408136,
+        "MAE": 0.009591065347194672,
+        "filename": "image507.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.921894775440089,
+        "F1": 0.9265211091042427,
+        "MAE": 0.018558356910943985,
+        "filename": "image508.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8778926890767307,
+        "F1": 0.877454753589566,
+        "MAE": 0.026046399027109146,
+        "filename": "image514.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8186331315494118,
+        "F1": 0.8096030777233455,
+        "MAE": 0.04134714975953102,
+        "filename": "image515.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8336230220967137,
+        "F1": 0.8493246662269927,
+        "MAE": 0.06101718917489052,
+        "filename": "image527.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9429421559046377,
+        "F1": 0.9466061738289012,
+        "MAE": 0.01252578292042017,
+        "filename": "image528.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8701850357547998,
+        "F1": 0.8887296912459981,
+        "MAE": 0.049570225179195404,
+        "filename": "image532.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9181028358874688,
+        "F1": 0.9274128609234163,
+        "MAE": 0.02604759857058525,
+        "filename": "image536.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9261846613331303,
+        "F1": 0.9338852248509034,
+        "MAE": 0.021264012902975082,
+        "filename": "image539.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9119029222868837,
+        "F1": 0.923072046658393,
+        "MAE": 0.030953869223594666,
+        "filename": "image541.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.7536896329075538,
+        "F1": 0.7612287966894836,
+        "MAE": 0.09478302299976349,
+        "filename": "image543.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9340754245022076,
+        "F1": 0.9416754268321833,
+        "MAE": 0.019973237067461014,
+        "filename": "image544.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9062571274842663,
+        "F1": 0.9310299370378652,
+        "MAE": 0.0461980476975441,
+        "filename": "image546.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9222896561275362,
+        "F1": 0.9258845973880371,
+        "MAE": 0.017116038128733635,
+        "filename": "image548.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8872453686189419,
+        "F1": 0.9068670334978876,
+        "MAE": 0.04710822179913521,
+        "filename": "image549.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9150061973352618,
+        "F1": 0.930456079517826,
+        "MAE": 0.033781155943870544,
+        "filename": "image550.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.844956406871098,
+        "F1": 0.8592941461851219,
+        "MAE": 0.05642107129096985,
+        "filename": "image555.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9266713535605677,
+        "F1": 0.9371658710613707,
+        "MAE": 0.02728201262652874,
+        "filename": "image560.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9596225021367892,
+        "F1": 0.9618738989546994,
+        "MAE": 0.00753459706902504,
+        "filename": "image563.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8865641902632757,
+        "F1": 0.8896591950689166,
+        "MAE": 0.027388490736484528,
+        "filename": "image601.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.6062484866031634,
+        "F1": 0.5685584631112832,
+        "MAE": 0.16534525156021118,
+        "filename": "image602.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.6952871897093161,
+        "F1": 0.6376253479308036,
+        "MAE": 0.0800151526927948,
+        "filename": "image603.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9312011408739747,
+        "F1": 0.960445343435725,
+        "MAE": 0.036009788513183594,
+        "filename": "image605.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9359922500322274,
+        "F1": 0.9553743444681801,
+        "MAE": 0.03045550175011158,
+        "filename": "image609.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8637995627124213,
+        "F1": 0.8508864354825743,
+        "MAE": 0.013531217351555824,
+        "filename": "image620.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8725294034936681,
+        "F1": 0.9044897143255778,
+        "MAE": 0.062192220240831375,
+        "filename": "image623.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.888747450073373,
+        "F1": 0.9188625569570212,
+        "MAE": 0.05352120101451874,
+        "filename": "image624.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9307993635815958,
+        "F1": 0.9568415866685951,
+        "MAE": 0.0387103334069252,
+        "filename": "image629.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8393567938586033,
+        "F1": 0.8935784002063027,
+        "MAE": 0.08919396251440048,
+        "filename": "image692.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9628551019304658,
+        "F1": 0.9793196809875627,
+        "MAE": 0.024558793753385544,
+        "filename": "image693.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8479495372580104,
+        "F1": 0.9229842828727289,
+        "MAE": 0.08567222952842712,
+        "filename": "image694.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.6603298138723277,
+        "F1": 0.728968275712405,
+        "MAE": 0.18839719891548157,
+        "filename": "image696.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.713368923741253,
+        "F1": 0.8486741640264205,
+        "MAE": 0.16821032762527466,
+        "filename": "image698.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9679928791853754,
+        "F1": 0.9802120828875367,
+        "MAE": 0.018499812111258507,
+        "filename": "image701.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8961051580394339,
+        "F1": 0.9109592908370414,
+        "MAE": 0.03676290065050125,
+        "filename": "image707.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9292651966084854,
+        "F1": 0.9439285405384312,
+        "MAE": 0.028939807787537575,
+        "filename": "image717.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9527685284403,
+        "F1": 0.975441750187023,
+        "MAE": 0.027402624487876892,
+        "filename": "image718.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8822949489263052,
+        "F1": 0.9278684395188477,
+        "MAE": 0.06908329576253891,
+        "filename": "image720.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9356964341110565,
+        "F1": 0.9448904956077926,
+        "MAE": 0.021913204342126846,
+        "filename": "image722.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8635686181351658,
+        "F1": 0.9104421457927478,
+        "MAE": 0.07598607242107391,
+        "filename": "image724.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9668947130918331,
+        "F1": 0.9736431165830639,
+        "MAE": 0.01368645764887333,
+        "filename": "image727.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9435969405221022,
+        "F1": 0.9596321850493917,
+        "MAE": 0.026860393583774567,
+        "filename": "image730.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9323578184776244,
+        "F1": 0.94678538551434,
+        "MAE": 0.02827654406428337,
+        "filename": "image732.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8419510272395585,
+        "F1": 0.8286644568998075,
+        "MAE": 0.024731118232011795,
+        "filename": "image745.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.6976018668192977,
+        "F1": 0.6194575004354873,
+        "MAE": 0.052069924771785736,
+        "filename": "image754.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9263244344655978,
+        "F1": 0.9350870726995406,
+        "MAE": 0.023258643224835396,
+        "filename": "image756.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9464097572283577,
+        "F1": 0.9620837534778098,
+        "MAE": 0.025125330314040184,
+        "filename": "image757.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9371727811239368,
+        "F1": 0.9470868774281225,
+        "MAE": 0.021851079538464546,
+        "filename": "image758.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.831642197489608,
+        "F1": 0.847661151761157,
+        "MAE": 0.061974115669727325,
+        "filename": "image763.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9596415081927591,
+        "F1": 0.9639142857148012,
+        "MAE": 0.010770092718303204,
+        "filename": "image765.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9103186591284085,
+        "F1": 0.9209290102173502,
+        "MAE": 0.029177645221352577,
+        "filename": "image767.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8556603613085396,
+        "F1": 0.8658019599523706,
+        "MAE": 0.05536701902747154,
+        "filename": "image768.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.6786835298191028,
+        "F1": 0.5728229373351829,
+        "MAE": 0.04518473893404007,
+        "filename": "image771.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9389627213975023,
+        "F1": 0.9598092106302047,
+        "MAE": 0.030409161001443863,
+        "filename": "image775.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.7121902021171203,
+        "F1": 0.705546440522197,
+        "MAE": 0.10601068288087845,
+        "filename": "image776.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9101480826548797,
+        "F1": 0.9446305309327654,
+        "MAE": 0.046686116605997086,
+        "filename": "image778.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8386688117617942,
+        "F1": 0.8654614477944382,
+        "MAE": 0.06907789409160614,
+        "filename": "image780.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9610200557198989,
+        "F1": 0.961485333551577,
+        "MAE": 0.004490401595830917,
+        "filename": "image788.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9661901581731113,
+        "F1": 0.9747495559504459,
+        "MAE": 0.016711225733160973,
+        "filename": "image792.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9245816670109954,
+        "F1": 0.9329887083718497,
+        "MAE": 0.025668326765298843,
+        "filename": "image830.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.6669304986272646,
+        "F1": 0.6618624865378157,
+        "MAE": 0.15859676897525787,
+        "filename": "image831.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8383895126060362,
+        "F1": 0.8382944736301063,
+        "MAE": 0.04079417139291763,
+        "filename": "image832.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.6299192866926199,
+        "F1": 0.5525166420742716,
+        "MAE": 0.1158197820186615,
+        "filename": "image869.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.7140480910009882,
+        "F1": 0.6614343707783609,
+        "MAE": 0.07017722725868225,
+        "filename": "image874.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9591760984894722,
+        "F1": 0.9661561434707768,
+        "MAE": 0.015487594529986382,
+        "filename": "image886.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8679697917978841,
+        "F1": 0.8945002377426443,
+        "MAE": 0.05887431278824806,
+        "filename": "image887.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8857578082948265,
+        "F1": 0.8841705901201222,
+        "MAE": 0.020240219309926033,
+        "filename": "image889.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8663807853512486,
+        "F1": 0.8567179664583532,
+        "MAE": 0.01648801937699318,
+        "filename": "image890.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9204586915228656,
+        "F1": 0.9266920497822543,
+        "MAE": 0.023936480283737183,
+        "filename": "image907.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8200073790198376,
+        "F1": 0.800012052918311,
+        "MAE": 0.027987945824861526,
+        "filename": "image911.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.47901153569004934,
+        "F1": 9.087604506625989e-11,
+        "MAE": 0.04223471134901047,
+        "filename": "image912.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.5134432743946419,
+        "F1": 0.11553197768783457,
+        "MAE": 0.034528061747550964,
+        "filename": "image920.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.43433604635687606,
+        "F1": 0.19589161875490663,
+        "MAE": 0.2346602827310562,
+        "filename": "image923.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.946655529761435,
+        "F1": 0.9597067519376656,
+        "MAE": 0.025257904082536697,
+        "filename": "image924.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8753951651891816,
+        "F1": 0.9327608773713895,
+        "MAE": 0.07416067272424698,
+        "filename": "image928.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9006923392991284,
+        "F1": 0.9030999832852932,
+        "MAE": 0.0211169570684433,
+        "filename": "image933.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8984145939332466,
+        "F1": 0.8978474320265802,
+        "MAE": 0.0172034353017807,
+        "filename": "image935.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.7644249872927262,
+        "F1": 0.6930193442447271,
+        "MAE": 0.0024336876813322306,
+        "filename": "image977.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8865955484681411,
+        "F1": 0.8737278552819963,
+        "MAE": 0.0030425756704062223,
+        "filename": "image978.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8769734438978711,
+        "F1": 0.8613569321826049,
+        "MAE": 0.0029627629555761814,
+        "filename": "image979.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8738306074954133,
+        "F1": 0.8570725707608677,
+        "MAE": 0.0026904703117907047,
+        "filename": "image981.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9300497665300834,
+        "F1": 0.9258448060191107,
+        "MAE": 0.0022485321387648582,
+        "filename": "image987.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.4707323945368254,
+        "F1": 0.3927656823366043,
+        "MAE": 0.2762588560581207,
+        "filename": "image991.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9722442767519816,
+        "F1": 0.9759605713139212,
+        "MAE": 0.00829482264816761,
+        "filename": "image992.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9382060826169576,
+        "F1": 0.9481288212162844,
+        "MAE": 0.022761404514312744,
+        "filename": "image998.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9171828628319286,
+        "F1": 0.9366968575038753,
+        "MAE": 0.037441153079271317,
+        "filename": "imgR162.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9279957660088289,
+        "F1": 0.9310144253154371,
+        "MAE": 0.014612864702939987,
+        "filename": "imgR163.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9549148278300921,
+        "F1": 0.9698541791201947,
+        "MAE": 0.023638246580958366,
+        "filename": "imgR165.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8635429687777558,
+        "F1": 0.8875888200980404,
+        "MAE": 0.05816086381673813,
+        "filename": "imgR168.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9252476950610488,
+        "F1": 0.9570345840020952,
+        "MAE": 0.041232913732528687,
+        "filename": "imgR169.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9415048616862323,
+        "F1": 0.9626211768244152,
+        "MAE": 0.03225374594330788,
+        "filename": "imgR170.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.583469297238856,
+        "F1": 0.5656893408522831,
+        "MAE": 0.19918924570083618,
+        "filename": "imgR172.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8963035099390597,
+        "F1": 0.9259207393926743,
+        "MAE": 0.050313979387283325,
+        "filename": "imgR173.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.8991007287752645,
+        "F1": 0.9031124250652359,
+        "MAE": 0.028289809823036194,
+        "filename": "imgR176.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      },
+      {
+        "mIoU": 0.9451633387000892,
+        "F1": 0.9502383833678361,
+        "MAE": 0.014127339236438274,
+        "filename": "imgR178.jpg",
+        "dataset": "HOLDOUT_ACD1K"
+      }
+    ],
+    "cod10k": [
+      {
+        "mIoU": 0.9496097467532294,
+        "F1": 0.9569673903646206,
+        "MAE": 0.01823430135846138,
+        "filename": "COD10K-CAM-1-Aquatic-11-Octopus-468.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.9077074679998471,
+        "F1": 0.9016599246825457,
+        "MAE": 0.006111036520451307,
+        "filename": "COD10K-CAM-1-Aquatic-13-Pipefish-625.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.9029523059291039,
+        "F1": 0.9004068196670785,
+        "MAE": 0.016243230551481247,
+        "filename": "COD10K-CAM-1-Aquatic-13-Pipefish-637.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.9427461928663128,
+        "F1": 0.9426504188902266,
+        "MAE": 0.008688938803970814,
+        "filename": "COD10K-CAM-1-Aquatic-13-Pipefish-676.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.8622467832388632,
+        "F1": 0.8461850649454691,
+        "MAE": 0.009976187720894814,
+        "filename": "COD10K-CAM-1-Aquatic-13-Pipefish-689.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.9195640009684434,
+        "F1": 0.9306934747452889,
+        "MAE": 0.0348929837346077,
+        "filename": "COD10K-CAM-1-Aquatic-5-CrocodileFish-125.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.9323944354074398,
+        "F1": 0.9325210580321226,
+        "MAE": 0.013170796446502209,
+        "filename": "COD10K-CAM-1-Aquatic-6-Fish-197.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.9194434416309305,
+        "F1": 0.9470358822382046,
+        "MAE": 0.041905052959918976,
+        "filename": "COD10K-CAM-1-Aquatic-7-Flounder-284.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.7186580118702567,
+        "F1": 0.6628475618354327,
+        "MAE": 0.05642145872116089,
+        "filename": "COD10K-CAM-1-Aquatic-9-GhostPipefish-379.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.8977066342888149,
+        "F1": 0.8918287937792708,
+        "MAE": 0.010468346998095512,
+        "filename": "COD10K-CAM-2-Terrestrial-23-Cat-1458.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.9273441982678341,
+        "F1": 0.93046306927037,
+        "MAE": 0.016581425443291664,
+        "filename": "COD10K-CAM-2-Terrestrial-24-Caterpillar-1607.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.5091654199747643,
+        "F1": 0.15910491636281682,
+        "MAE": 0.07130029797554016,
+        "filename": "COD10K-CAM-2-Terrestrial-25-Centipede-1659.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.4957256319369982,
+        "F1": 4.462293616928919e-10,
+        "MAE": 0.008943025022745132,
+        "filename": "COD10K-CAM-2-Terrestrial-36-Leopard-2061.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.93674041699583,
+        "F1": 0.9406314464539591,
+        "MAE": 0.016918513923883438,
+        "filename": "COD10K-CAM-2-Terrestrial-38-Lizard-2229.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.7838612770132538,
+        "F1": 0.7880575425773462,
+        "MAE": 0.08073493838310242,
+        "filename": "COD10K-CAM-2-Terrestrial-38-Lizard-2264.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.4707279205649179,
+        "F1": 6.515931451976547e-11,
+        "MAE": 0.06172839179635048,
+        "filename": "COD10K-CAM-2-Terrestrial-38-Lizard-2285.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.8899980314038765,
+        "F1": 0.8868216198341848,
+        "MAE": 0.018047912046313286,
+        "filename": "COD10K-CAM-2-Terrestrial-38-Lizard-2319.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.5269055918606678,
+        "F1": 0.19358208093810814,
+        "MAE": 0.05311413109302521,
+        "filename": "COD10K-CAM-2-Terrestrial-42-Sciuridae-2413.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.7923580218429254,
+        "F1": 0.7597638822239081,
+        "MAE": 0.028386319056153297,
+        "filename": "COD10K-CAM-2-Terrestrial-45-Spider-2544.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.7766009772126131,
+        "F1": 0.7312368589573436,
+        "MAE": 0.025536786764860153,
+        "filename": "COD10K-CAM-2-Terrestrial-46-StickInsect-2841.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.7155647057696874,
+        "F1": 0.620477654321709,
+        "MAE": 0.021753275766968727,
+        "filename": "COD10K-CAM-2-Terrestrial-46-StickInsect-2870.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.6446716262124885,
+        "F1": 0.4865900383459035,
+        "MAE": 0.03393366560339928,
+        "filename": "COD10K-CAM-2-Terrestrial-46-StickInsect-2873.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.8313367587808006,
+        "F1": 0.8055447596964928,
+        "MAE": 0.014477967284619808,
+        "filename": "COD10K-CAM-3-Flying-56-Cicada-3527.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.4630527496597418,
+        "F1": 5.162356099057232e-11,
+        "MAE": 0.07385370135307312,
+        "filename": "COD10K-CAM-3-Flying-62-Mantis-4279.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.4236774444707943,
+        "F1": 2.49906285136826e-11,
+        "MAE": 0.14255568385124207,
+        "filename": "COD10K-CAM-3-Flying-62-Mantis-4307.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.8594051154635296,
+        "F1": 0.8446529268005064,
+        "MAE": 0.013442417606711388,
+        "filename": "COD10K-CAM-3-Flying-62-Mantis-4313.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.6917599286179026,
+        "F1": 0.5709260217722788,
+        "MAE": 0.016251251101493835,
+        "filename": "COD10K-CAM-3-Flying-65-Owl-4569.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 5.972222425043583e-06,
+        "filename": "COD10K-NonCAM-1-Amphibian-200.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.7063737686839886e-05,
+        "filename": "COD10K-NonCAM-2-Aquatic-502.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 4.0508571146347094e-06,
+        "filename": "COD10K-NonCAM-2-Aquatic-503.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 0.4762401581212834,
+        "F1": 8.027614994940385e-11,
+        "MAE": 0.047475703060626984,
+        "filename": "COD10K-NonCAM-2-Aquatic-639.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.449396222596988e-05,
+        "filename": "COD10K-NonCAM-3-Flying-1013.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 8.577686458011158e-06,
+        "filename": "COD10K-NonCAM-3-Flying-1026.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 8.59569354361156e-06,
+        "filename": "COD10K-NonCAM-3-Flying-1150.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.0015513631515204906,
+        "filename": "COD10K-NonCAM-3-Flying-1535.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 6.308025149337482e-06,
+        "filename": "COD10K-NonCAM-3-Flying-1622.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 3.734708297997713e-05,
+        "filename": "COD10K-NonCAM-3-Flying-1920.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 7.649761755601503e-06,
+        "filename": "COD10K-NonCAM-4-Terrestial-2089.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.705005888652522e-05,
+        "filename": "COD10K-NonCAM-4-Terrestial-2126.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.6500393030582927e-05,
+        "filename": "COD10K-NonCAM-4-Terrestial-2295.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 4.794161213794723e-05,
+        "filename": "COD10K-NonCAM-4-Terrestial-2510.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 6.8490726334857754e-06,
+        "filename": "COD10K-NonCAM-4-Terrestial-2544.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.600423638592474e-05,
+        "filename": "COD10K-NonCAM-4-Terrestial-2553.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.1799476851592772e-05,
+        "filename": "COD10K-NonCAM-4-Terrestial-2748.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 5.006849460187368e-05,
+        "filename": "COD10K-NonCAM-4-Terrestial-2792.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.000262538407696411,
+        "filename": "COD10K-NonCAM-5-Background-2-Ocean-3223.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.00112722918856889,
+        "filename": "COD10K-NonCAM-5-Background-2-Ocean-3264.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.6087429685285315e-05,
+        "filename": "COD10K-NonCAM-5-Background-3-Sand-3873.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 6.369038601405919e-06,
+        "filename": "COD10K-NonCAM-5-Background-4-Sky-4102.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.0003738328814506531,
+        "filename": "COD10K-NonCAM-5-Background-5-Vegetation-4722.jpg",
+        "dataset": "HOLDOUT_COD10K"
+      }
+    ],
+    "noise": [
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 6.432924692489905e-06,
+        "filename": "COD10K-NonCAM-1-Amphibian-145.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 2.0141333152423613e-05,
+        "filename": "COD10K-NonCAM-1-Amphibian-64.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 2.152312117686961e-05,
+        "filename": "COD10K-NonCAM-1-Amphibian-71.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.00019608034926932305,
+        "filename": "COD10K-NonCAM-1-Amphibian-95.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 3.577097595552914e-05,
+        "filename": "COD10K-NonCAM-2-Aquatic-216.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 8.051669283304363e-06,
+        "filename": "COD10K-NonCAM-2-Aquatic-304.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 8.087113201327156e-06,
+        "filename": "COD10K-NonCAM-2-Aquatic-618.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 8.398601494263858e-06,
+        "filename": "COD10K-NonCAM-2-Aquatic-659.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 7.868844477343373e-06,
+        "filename": "COD10K-NonCAM-2-Aquatic-666.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 6.447469786508009e-06,
+        "filename": "COD10K-NonCAM-2-Aquatic-692.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.1753639228118118e-05,
+        "filename": "COD10K-NonCAM-2-Aquatic-723.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.001345921540632844,
+        "filename": "COD10K-NonCAM-2-Aquatic-724.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 8.699022146174684e-06,
+        "filename": "COD10K-NonCAM-2-Aquatic-773.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 3.6096345866099e-05,
+        "filename": "COD10K-NonCAM-3-Flying-1015.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 2.3502543626818806e-05,
+        "filename": "COD10K-NonCAM-3-Flying-1118.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 7.517482117691543e-06,
+        "filename": "COD10K-NonCAM-3-Flying-1145.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.00027972878888249397,
+        "filename": "COD10K-NonCAM-3-Flying-1401.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 6.2179706219467334e-06,
+        "filename": "COD10K-NonCAM-3-Flying-1523.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.0686185305530671e-05,
+        "filename": "COD10K-NonCAM-3-Flying-1555.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 8.15032035461627e-06,
+        "filename": "COD10K-NonCAM-3-Flying-1571.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 5.154007794772042e-06,
+        "filename": "COD10K-NonCAM-3-Flying-1593.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 4.5125420911062974e-06,
+        "filename": "COD10K-NonCAM-3-Flying-1654.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.90690225281287e-05,
+        "filename": "COD10K-NonCAM-3-Flying-1727.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.2808946848963387e-05,
+        "filename": "COD10K-NonCAM-3-Flying-1863.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 7.021830242592841e-06,
+        "filename": "COD10K-NonCAM-3-Flying-1933.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.7093620044761337e-05,
+        "filename": "COD10K-NonCAM-3-Flying-1954.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 0.45289802553312203,
+        "F1": 4.0494027129358406e-11,
+        "MAE": 0.09454851597547531,
+        "filename": "COD10K-NonCAM-3-Flying-1956.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 5.485466772370273e-06,
+        "filename": "COD10K-NonCAM-4-Terrestial-2277.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.00015422707656398416,
+        "filename": "COD10K-NonCAM-4-Terrestial-2305.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 5.716043233405799e-06,
+        "filename": "COD10K-NonCAM-4-Terrestial-2327.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 6.999036941124359e-06,
+        "filename": "COD10K-NonCAM-4-Terrestial-2430.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 0.3274192810120437,
+        "F1": 1.1051921929101348e-11,
+        "MAE": 0.3443320095539093,
+        "filename": "COD10K-NonCAM-4-Terrestial-2573.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.0036463807336986065,
+        "filename": "COD10K-NonCAM-4-Terrestial-2855.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 3.71248388546519e-05,
+        "filename": "COD10K-NonCAM-4-Terrestial-2872.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.3554895303968806e-05,
+        "filename": "COD10K-NonCAM-4-Terrestial-2881.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 5.416797648649663e-05,
+        "filename": "COD10K-NonCAM-5-Background-1-Indoor-3051.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 0.46829986575286137,
+        "F1": 6.016847171719805e-11,
+        "MAE": 0.06384806334972382,
+        "filename": "COD10K-NonCAM-5-Background-2-Ocean-3421.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 0.4996681242114551,
+        "F1": 5.7471264037521466e-09,
+        "MAE": 0.003530526766553521,
+        "filename": "COD10K-NonCAM-5-Background-3-Sand-3715.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 2.6188125048065558e-05,
+        "filename": "COD10K-NonCAM-5-Background-3-Sand-3716.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 0.49992944161409936,
+        "F1": 2.7027026296566858e-08,
+        "MAE": 0.0015073735266923904,
+        "filename": "COD10K-NonCAM-5-Background-3-Sand-3809.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 5.989556029817322e-06,
+        "filename": "COD10K-NonCAM-5-Background-3-Sand-4002.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 2.7463987862574868e-05,
+        "filename": "COD10K-NonCAM-5-Background-3-Sand-4012.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.0478614967723843e-05,
+        "filename": "COD10K-NonCAM-5-Background-4-Sky-4090.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.2028463061142247e-05,
+        "filename": "COD10K-NonCAM-5-Background-4-Sky-4100.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 4.944856755173532e-06,
+        "filename": "COD10K-NonCAM-5-Background-4-Sky-4366.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 1.380594494548859e-05,
+        "filename": "COD10K-NonCAM-5-Background-4-Sky-4439.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 6.747917359462008e-05,
+        "filename": "COD10K-NonCAM-5-Background-5-Vegetation-4623.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 0.4966812136662752,
+        "F1": 5.747126433478662e-10,
+        "MAE": 0.008156806230545044,
+        "filename": "COD10K-NonCAM-5-Background-5-Vegetation-4778.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.0001749349758028984,
+        "filename": "COD10K-NonCAM-5-Background-5-Vegetation-4797.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      },
+      {
+        "mIoU": 1.0,
+        "F1": 1.0,
+        "MAE": 0.00021879028645344079,
+        "filename": "COD10K-NonCAM-5-Background-5-Vegetation-4894.jpg",
+        "dataset": "HOLDOUT_NOISE"
+      }
+    ]
+  }
+}
