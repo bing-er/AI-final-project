@@ -270,7 +270,7 @@ Last updated: April 2, 2026
 | Experiment 2 — SegFormer transfer (`src/train_exp2.py`)                         | Sepehr         | ✅ Complete |
 | Experiment 2 notebook (`notebooks/03_train_exp2_Sepehr.ipynb`)                  | Sepehr         | 🔄 In progress |
 | Final evaluation on 200-image hold-out (`src/evaluate.py`)                      | Sepehr         | ✅ Complete |
-| Final evaluation on 200-image hold-out (`notebooks/02_train_exp2_Sepehr.ipynb`) | Sepehr         | 🔄 In progress |
+| Final evaluation on 200-image hold-out (`notebooks/03_evaluate_Sepehr.ipynb`)   | Sepehr         | 🔄 In progress |
 | Final report                                                                    | All            | ⏳ In progress |
 | PowerPoint                                                                      | Yansong&Sepehr | ⏳ In progress |
 
