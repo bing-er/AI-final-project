@@ -255,20 +255,24 @@ Last updated: April 2, 2026
 
 ### Implementation Progress
 
-| Component | Owner | Status |
-|---|---|---|
-| Dataset acquisition (COD10K, ACD1K, CAMO) | Binger | ✅ Complete |
-| EDA notebook (`notebooks/01_EDA_Binger.ipynb`) | Binger | ✅ Complete |
-| Preprocessing pipeline (`src/dataset.py`) | Binger | ✅ Complete |
-| Split generator (`src/generate_splits.py`) | Binger | ✅ Complete |
-| Split index files (`splits/`) | Binger | ✅ Complete |
-| Experiment 3 training (`src/train_exp3.py`) | Binger | ✅ Complete |
-| Experiment 3 notebook (`notebooks/02_train_exp3_Binger.ipynb`) | Binger | ✅ Complete |
-| Evaluation script (`src/evaluate.py`) | Binger | ✅ Complete |
-| Experiment 1 — SINetV2 baseline | Yansong | ✅ Complete |
-| Experiment 2 — SegFormer transfer | Sepehr | 🔄 In progress |
-| Final evaluation on 200-image hold-out | Sepehr | 🔄 In progress |
-| Final report | All | ⏳ In progress |
+| Component                                                                       | Owner          | Status |
+|---------------------------------------------------------------------------------|----------------|---|
+| Dataset acquisition (COD10K, ACD1K, CAMO)                                       | Binger         | ✅ Complete |
+| EDA notebook (`notebooks/01_EDA_Binger.ipynb`)                                  | Binger         | ✅ Complete |
+| Preprocessing pipeline (`src/dataset.py`)                                       | Binger         | ✅ Complete |
+| Split generator (`src/generate_splits.py`)                                      | Binger         | ✅ Complete |
+| Split index files (`splits/`)                                                   | Binger         | ✅ Complete |
+| Experiment 3 training (`src/train_exp3.py`)                                     | Binger         | ✅ Complete |
+| Experiment 3 notebook (`notebooks/02_train_exp3_Binger.ipynb`)                  | Binger         | ✅ Complete |
+| Evaluation script (`src/evaluate.py`)                                           | Binger         | ✅ Complete |
+| Experiment 1 — SINetV2 baseline (`src/engine_exp1.py`)                          | Yansong        | ✅ Complete |
+| Experiment 1 notebook (`notebooks/02_train_exp1_Yansong.ipynb`)                 | Yansong        | ✅ Complete |
+| Experiment 2 — SegFormer transfer (`src/train_exp2.py`)                         | Sepehr         | ✅ Complete |
+| Experiment 2 notebook (`notebooks/03_train_exp2_Sepehr.ipynb`)                  | Sepehr         | 🔄 In progress |
+| Final evaluation on 200-image hold-out (`src/evaluate.py`)                      | Sepehr         | ✅ Complete |
+| Final evaluation on 200-image hold-out (`notebooks/02_train_exp2_Sepehr.ipynb`) | Sepehr         | 🔄 In progress |
+| Final report                                                                    | All            | ⏳ In progress |
+| PowerPoint                                                                      | Yansong&Sepehr | ⏳ In progress |
 
 ### Experiment 3 Results (SegFormer-B2, Joint Training)
 
