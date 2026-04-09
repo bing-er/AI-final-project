@@ -57,48 +57,24 @@ AI-final-project/
 ├── outputs/
 │   └── exp1/
 │       ├── final/                     # Final run (lr=6e-5, 60 epochs, early stopped @ ep7) — mIoU=0.6174)
-│       ├── sweep_lr1e4/               # Sweep run 1: lr=1e-4, 30 epochs — mIoU=0.5981
-│       ├── sweep_lr1e5/               # Sweep run 3: lr=1e-5, 20 epochs — mIoU=0.5865
-│       └── sweep_lr6e5/               # Sweep run 2: lr=6e-5, 20 epochs — mIoU=0.5322
-│   └── exp2/
-│       ├── eval/                     
-│       ├── final/                     
-│       │   ├── config.json           
-│       │   └── history.json          
-│       ├── final_lr1e4/               
-│       │   ├── config.json
-│       │   └── history.json
-│       ├── final_lr6e5_50ep/         
-│       │   ├── config.json
-│       │   └── history.json
-│       ├── sweep_lr1e4/               
-│       │   ├── config.json
-│       │   └── history.json
-│       ├── sweep_lr1e5/              
-│       │   ├── config.json
-│       │   └── history.json
-│       └── sweep_lr6e5/               
-│           ├── config.json
-│           └── history.json
+│       ├── sweep_lr1e4/               # Sweep run 1: lr=1e-4, 30 epochs — mIoU=0.5981, @ ep30
+│       ├── sweep_lr6e5/               # Sweep run 2: lr=6e-5, 30 epochs — mIoU=0.5865, @ ep26
+│       └── sweep_lr1e5/               # Sweep run 3: lr=1e-5, 30 epochs — mIoU=0.5322, @ ep28
+│   └── exp2/                          # SegFormer transfer learning (COD10K pretrain -> ACD1K finetune)
+│       ├── eval/                      # Final evaluation on test set
+│       ├── stage1/                    # COD10K pretraining (lr=6e-5, 60 epochs, early stopped @ ep47) — mIoU=0.8966)
+│       ├── sweep_s2_lr1e4/            # Sweep run 1: lr=1e-4, 20 epochs — mIoU=0.8652, @ ep6 (COD10K pretrain)
+│       ├── sweep_s2_lr1e5/            # Sweep run 2: lr=1e-5, 20 epochs — mIoU=0.8588, @ ep20 (COD10K pretrain)
+│       ├── sweep_s2_lr5e6/            # Sweep run 3: lr=5e-6, 20 epochs — mIoU=0.8513, @ ep20 (COD10K pretrain)
+│       └── final/                     # Final run (lr=1e-5, 50 epochs, early stopped @ ep34) — mIoU=0.8628)
 │   └── exp3/
-│       ├── final/                     # Final run (lr=6e-5, A100, early stopped @ ep7) — mIoU=0.8717
-│       │   ├── config.json            # Training hyperparameters
-│       │   └── history.json           # Per-epoch metrics
-│       ├── final_lr1e4/               # Final run (lr=1e-4, A100, early stopped @ ep35) — mIoU=0.8712
-│       │   ├── config.json            # Training hyperparameters
-│       │   └── history.json           # Per-epoch metrics
-│       ├── final_lr6e5_50ep/          # Definitive final run (lr=6e-5, A100, early stopped @ ep17) — mIoU=0.8780 ✅
-│       │   ├── config.json            # Training hyperparameters
-│       │   └── history.json           # Per-epoch metrics
+│       ├── eval/      
+│       ├── final/                     # Final run 1 (lr=6e-5, A100, early stopped @ ep7) — mIoU=0.8717
+│       ├── final_lr1e4/               # Final run 2 (lr=1e-4, A100, early stopped @ ep35) — mIoU=0.8712
+│       ├── final_lr6e5_50ep/          # Definitive final run 3 (lr=6e-5, A100, early stopped @ ep17) — mIoU=0.8780 ✅
 │       ├── sweep_lr1e4/               # Sweep run 1: lr=1e-4, 20 epochs — mIoU=0.8735, @ ep14
-│       │   ├── config.json            # Training hyperparameters
-│       │   └── history.json           # Per-epoch metrics
 │       ├── sweep_lr6e5/               # Sweep run 2: lr=6e-5, 20 epochs — mIoU=0.8805, @ ep17
-│       │   ├── config.json            # Training hyperparameters
-│       │   └── history.json           # Per-epoch metrics
 │       └── sweep_lr1e5/               # Sweep run 3: lr=1e-5, 20 epochs — mIoU=0.8643, @ ep18
-│           ├── config.json
-│           └── history.json
 │   └── figures/                       # EDA figures
 ├── splits/                            # Fixed split index files — version controlled, generated once with seed=42
 │   ├── acd1k_splits.json              # ACD1K: 748 train / 230 val filenames
@@ -111,9 +87,9 @@ AI-final-project/
 │   ├── dataset.py                     # Data loading, augmentation, DataLoader factory for all 3 conditions
 │   ├── evaluate.py                    # Evaluation metrics: mIoU, F1/Dice, MAE, FPR
 │   ├── generate_splits.py             # Generates all split JSON files — run once before trainin
-│   ├── engine_exp1.py 
-│   ├── train_exp2.py
-│   └── train_exp3.py                     
+│   ├── engine_exp1.py                 # Core training/validation engine for the Experiment 1 SINetV2 baseline
+│   ├── train_exp2.py                  # Main training entry point for Experiment 2 (SegFormer transfer learning)
+│   └── train_exp3.py                  # Main training entry point for Experiment 3 (joint training sweeps and final run)  
 ├── .gitignore                         # Excludes data/, checkpoints, figures, __pycache__
 ├── README.md                          # Project documentation
 └── requirements.txt                   # Python dependencies
@@ -182,23 +158,63 @@ python src/engine_exp1.py \
     --data_root data/ --splits_dir splits/ \
     --output_dir outputs/exp1/sweep_lr1e5
  
+ # Final run of stage 1 
  python src/engine_exp1.py \
     --lr 1e-4 --epochs 60 --batch_size 8 \
     --data_root data/ --splits_dir splits/ \
     --output_dir outputs/exp1
 
-python src/engine_exp1.py --epochs 60 --batch_size 8
+# Colab notebook
+notebooks/02_train_exp1_Yansong.ipynb
+
 ```
 
 ### Experiment 2 — SegFormer Transfer Learning (Sepehr)
 
 ```bash
 # Stage 1: Pretrain on COD10K
+python src/train_exp2.py \
+    --stage 1 \
+    --encoder_lr 1e-4 --head_lr 1e-3 \
+    --epochs 50 --batch_size 16 --accum_steps 1 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp2/stage1
+     
+# Stage 2: Fine-tune on ACD1K (COD10K pretrain)
+python src/train_exp2.py \
+    --stage 2 \
+    --lr 1e-4 --epochs 20 --batch_size 16 --accum_steps 1 \
+    --stage1_weights outputs/exp2/stage1/best_model.pth \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp2/sweep_s2_lr1e4
+    
+python src/train_exp2.py \
+    --stage 2 \
+    --lr 1e-5 --epochs 20 --batch_size 16 --accum_steps 1 \
+    --stage1_weights outputs/exp2/stage1/best_model.pth \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp2/sweep_s2_lr1e5
+     
+python src/train_exp2.py \
+    --stage 2 \
+    --lr 5e-6 --epochs 20 --batch_size 16 --accum_steps 1 \
+    --stage1_weights outputs/exp2/stage1/best_model.pth \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp2/sweep_s2_lr5e6
 
-# Stage 2: Fine-tune on ACD1K
+# Final run
+python src/train_exp2.py \
+    --stage 2 \
+    --lr 1e-5 --epochs 50 --batch_size 16 --accum_steps 1 \
+    --stage1_weights outputs/exp2/stage1/best_model.pth \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp2/final
 
+# Colab notebook
+notebooks/03_train_exp2_Sepehr.ipynb
+    
 # Evaluate on final test set
-
+notebooks/03_evaluate_Sepehr.ipynb
 ```
 
 ### Experiment 3 — SegFormer Joint Training (Binger)
@@ -222,15 +238,28 @@ python src/train_exp3.py \
     --batch_size 16 --accum_steps 1 \
     --data_root data/ --splits_dir splits/ \
     --output_dir outputs/exp3/sweep_lr1e5
-    
+  
+# Final run  
 python src/train_exp3.py \
     --lr 6e-05 --acd1k_w 8.0 --epochs 50 \
     --batch_size 16 --accum_steps 1 \
     --data_root data/ --splits_dir splits/ \
     --output_dir outputs/exp3/final
+    
+python src/train_exp3.py \
+    --lr 1e-4 --acd1k_w 8.0 --epochs 50 \
+    --batch_size 16 --accum_steps 1 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp3/final_lr1e4
+    
+python src/train_exp3.py \
+    --lr 6e-5 --acd1k_w 8.0 --epochs 50 \
+    --batch_size 16 --accum_steps 1 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp3/final_lr6e5_50ep
 
+# Colab notebook
 notebooks/02_train_exp3_Binger.ipynb
-
 ```
 
 
@@ -250,24 +279,24 @@ Last updated: April 2, 2026
 
 ### Implementation Progress
 
-| Component                                                                       | Owner          | Status |
-|---------------------------------------------------------------------------------|----------------|---|
-| Dataset acquisition (COD10K, ACD1K, CAMO)                                       | Binger         | ✅ Complete |
-| EDA notebook (`notebooks/01_EDA_Binger.ipynb`)                                  | Binger         | ✅ Complete |
-| Preprocessing pipeline (`src/dataset.py`)                                       | Binger         | ✅ Complete |
-| Split generator (`src/generate_splits.py`)                                      | Binger         | ✅ Complete |
-| Split index files (`splits/`)                                                   | Binger         | ✅ Complete |
-| Experiment 3 training (`src/train_exp3.py`)                                     | Binger         | ✅ Complete |
-| Experiment 3 notebook (`notebooks/02_train_exp3_Binger.ipynb`)                  | Binger         | ✅ Complete |
-| Evaluation script (`src/evaluate.py`)                                           | Binger         | ✅ Complete |
-| Experiment 1 — SINetV2 baseline (`src/engine_exp1.py`)                          | Yansong        | ✅ Complete |
-| Experiment 1 notebook (`notebooks/02_train_exp1_Yansong.ipynb`)                 | Yansong        | ✅ Complete |
-| Experiment 2 — SegFormer transfer (`src/train_exp2.py`)                         | Sepehr         | ✅ Complete |
-| Experiment 2 notebook (`notebooks/03_train_exp2_Sepehr.ipynb`)                  | Sepehr         | 🔄 In progress |
-| Final evaluation on 200-image hold-out (`src/evaluate.py`)                      | Sepehr         | ✅ Complete |
-| Final evaluation on 200-image hold-out (`notebooks/03_evaluate_Sepehr.ipynb`)   | Sepehr         | 🔄 In progress |
-| Final report                                                                    | All            | ⏳ In progress |
-| PowerPoint                                                                      | Yansong&Sepehr | ⏳ In progress |
+| Component                                                                     | Owner          | Status |
+|-------------------------------------------------------------------------------|----------------|---|
+| Dataset acquisition (COD10K, ACD1K, CAMO)                                     | Binger         | ✅ Complete |
+| EDA notebook (`notebooks/01_EDA_Binger.ipynb`)                                | Binger         | ✅ Complete |
+| Preprocessing pipeline (`src/dataset.py`)                                     | Binger         | ✅ Complete |
+| Split generator (`src/generate_splits.py`)                                    | Binger         | ✅ Complete |
+| Split index files (`splits/`)                                                 | Binger         | ✅ Complete |
+| Experiment 3 training (`src/train_exp3.py`)                                   | Binger         | ✅ Complete |
+| Experiment 3 notebook (`notebooks/02_train_exp3_Binger.ipynb`)                | Binger         | ✅ Complete |
+| Evaluation script (`src/evaluate.py`)                                         | Binger         | ✅ Complete |
+| Experiment 1 — SINetV2 baseline (`src/engine_exp1.py`)                        | Yansong        | ✅ Complete |
+| Experiment 1 notebook (`notebooks/02_train_exp1_Yansong.ipynb`)               | Yansong        | ✅ Complete |
+| Experiment 2 — SegFormer transfer (`src/train_exp2.py`)                       | Sepehr         | ✅ Complete |
+| Experiment 2 notebook (`notebooks/02_train_exp2_Sepehr.ipynb`)                | Sepehr         | ✅ Complete |
+| Final evaluation on 200-image hold-out (`src/evaluate.py`)                    | Sepehr         | ✅ Complete |
+| Final evaluation on 200-image hold-out (`notebooks/03_evaluate_Sepehr.ipynb`) | Sepehr         | 🔄 In progress |
+| Final report                                                                  | All            | ⏳ In progress |
+| PowerPoint                                                                    | Yansong&Sepehr | ⏳ In progress |
 
 ### Experiment 3 Results (SegFormer-B2, Joint Training)
 
@@ -275,7 +304,7 @@ Last updated: April 2, 2026
 |---|---|---|
 | val mIoU | **0.8780** | ≥ 0.65 ✅ |
 | val F1 | **0.8721** | ≥ 0.75 ✅ |
-| val MAE | **0.0338** | lower is better ✅ |
+| val MAE | **0.0338** | lower is better (target < 0.05) ✅ |
 
 Best checkpoint: `outputs/exp3/final_lr6e5_50ep/best_model.pth`  
 Hardware: Google Colab A100 | LR: 6e-5 | Batch: 16 | Early stop: epoch 27
