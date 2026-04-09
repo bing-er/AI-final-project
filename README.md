@@ -50,8 +50,36 @@ AI-final-project/
 │   └── 01_EDA_Binger.pdf              # EDA notebook exported as PDF for reference
 ├── notebooks/
 │   ├── 01_EDA_Binger.ipynb            # EDA — class distribution, resolution, mask coverage, normalization constants
-│   └── 02_train_exp3_Binger.ipynb     # Experiment 3 — joint training sweep + final run on A100
+│   ├── 02_train_exp1_Yansong.ipynb    # Experiment 1 — SINetV2 baseline    
+│   ├── 02_train_exp2_Sepehr.ipynb     # Experiment 2 — SegFormer transfer
+│   ├── 02_train_exp3_Binger.ipynb     # Experiment 3 — joint training sweep + final run on A100 
+│   └── 03_evaluate_Sepehr.ipynb       # Final evaluation script
 ├── outputs/
+│   └── exp1/
+│       ├── final/                     # Final run (lr=6e-5, T4, early stopped)
+│       ├── sweep_lr1e4/               # Sweep run 1: lr=1e-4, 30 epochs — mIoU=
+│       ├── sweep_lr1e5/               # Sweep run 3: lr=1e-5, 20 epochs — mIoU=
+│       └── sweep_lr6e5/               # Sweep run 2: lr=6e-5, 20 epochs — mIoU=
+│   └── exp2/
+│       ├── eval/                     
+│       ├── final/                     
+│       │   ├── config.json           
+│       │   └── history.json          
+│       ├── final_lr1e4/               
+│       │   ├── config.json
+│       │   └── history.json
+│       ├── final_lr6e5_50ep/         
+│       │   ├── config.json
+│       │   └── history.json
+│       ├── sweep_lr1e4/               
+│       │   ├── config.json
+│       │   └── history.json
+│       ├── sweep_lr1e5/              
+│       │   ├── config.json
+│       │   └── history.json
+│       └── sweep_lr6e5/               
+│           ├── config.json
+│           └── history.json
 │   └── exp3/
 │       ├── final/                     # Final run (lr=6e-5, T4, early stopped)
 │       │   ├── config.json            # Training hyperparameters
@@ -82,7 +110,10 @@ AI-final-project/
 │   ├── __init__.py                    # Package root
 │   ├── dataset.py                     # Data loading, augmentation, DataLoader factory for all 3 conditions
 │   ├── evaluate.py                    # Evaluation metrics: mIoU, F1/Dice, MAE, FPR
-│   └── generate_splits.py             # Generates all split JSON files — run once before training
+│   ├── generate_splits.py             # Generates all split JSON files — run once before trainin
+│   ├── engine_exp1.py
+│   ├── train_exp2.py
+│   └── train_exp3.py                     
 ├── .gitignore                         # Excludes data/, checkpoints, figures, __pycache__
 ├── README.md                          # Project documentation
 └── requirements.txt                   # Python dependencies
@@ -136,24 +167,40 @@ notebooks/01_EDA_Binger.ipynb
 
 ```bash
 # Train SINetV2 on ACD1K only
-# python src/train_exp1.py --epochs 100 --batch_size 16
+python src/engine_exp1.py \
+    --lr 1e-4 --epochs 30 --batch_size 8 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp1/sweep_lr1e4
+    
+python src/engine_exp1.py \
+    --lr 6e-5 --epochs 30 --batch_size 8 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp1/sweep_lr6e5
+    
+python src/engine_exp1.py \
+    --lr 1e-5 --epochs 30 --batch_size 8 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp1/sweep_lr1e5
+ 
+ python src/engine_exp1.py \
+    --lr 1e-4 --epochs 60 --batch_size 8 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp1
 
-# Evaluate on final test set
-# python src/evaluate.py --weights outputs/exp1_best.pth --experiment 1
+python src/engine_exp1.py --epochs 60 --batch_size 8
 ```
 
 ### Experiment 2 — SegFormer Transfer Learning (Sepehr)
 
 ```bash
 # Stage 1: Pretrain on COD10K
-# python src/train_exp2.py --stage 1 --epochs 50 --batch_size 16
+# python src/train_exp2.py --stage 1 --epochs 50 --batch_size 8
 
 # Stage 2: Fine-tune on ACD1K
 # python src/train_exp2.py --stage 2 --weights outputs/exp2_stage1_best.pth --epochs 50
 
 # Evaluate on final test set
 # python src/evaluate.py --weights outputs/exp2_best.pth --experiment 2
-
 
 # Evaluate on final test set
 # See notebooks/03_evaluate.ipynb
@@ -163,6 +210,30 @@ notebooks/01_EDA_Binger.ipynb
 
 ```bash
 # Train on COD10K + CAMO + ACD1K jointly
+python src/train_exp3.py \
+    --lr 1e-4 --acd1k_w 8.0 --epochs 20 \
+    --batch_size 16 --accum_steps 1 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp3/sweep_lr1e4
+    
+python src/train_exp3.py \
+    --lr 6e-5 --acd1k_w 8.0 --epochs 20 \
+    --batch_size 16 --accum_steps 1 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp3/sweep_lr6e5   
+    
+python src/train_exp3.py \
+    --lr 1e-5 --acd1k_w 8.0 --epochs 20 \
+    --batch_size 16 --accum_steps 1 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp3/sweep_lr1e5
+    
+python src/train_exp3.py \
+    --lr 6e-05 --acd1k_w 8.0 --epochs 50 \
+    --batch_size 16 --accum_steps 1 \
+    --data_root data/ --splits_dir splits/ \
+    --output_dir outputs/exp3/final
+
 notebooks/02_train_exp3_Binger.ipynb
 
 ```
