@@ -265,9 +265,9 @@ Last updated: April 2, 2026
 | Experiment 3 training (`src/train_exp3.py`) | Binger | ✅ Complete |
 | Experiment 3 notebook (`notebooks/02_train_exp3_Binger.ipynb`) | Binger | ✅ Complete |
 | Evaluation script (`src/evaluate.py`) | Binger | ✅ Complete |
-| Experiment 1 — SINetV2 baseline | Yansong | 🔄 In progress |
-| Experiment 2 — SegFormer transfer | Sepehr | ✅ Complete |
-| Final evaluation on 200-image hold-out | Sepehr | ⏳ Pending |
+| Experiment 1 — SINetV2 baseline | Yansong | ✅ Complete |
+| Experiment 2 — SegFormer transfer | Sepehr | 🔄 In progress |
+| Final evaluation on 200-image hold-out | Sepehr | 🔄 In progress |
 | Final report | All | ⏳ In progress |
 
 ### Experiment 3 Results (SegFormer-B2, Joint Training)
