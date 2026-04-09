@@ -81,22 +81,22 @@ AI-final-project/
 │           ├── config.json
 │           └── history.json
 │   └── exp3/
-│       ├── final/                     # Final run (lr=6e-5, T4, early stopped)
+│       ├── final/                     # Final run (lr=6e-5, A100, early stopped @ ep7) — mIoU=0.8717
 │       │   ├── config.json            # Training hyperparameters
 │       │   └── history.json           # Per-epoch metrics
-│       ├── final_lr1e4/               # Final run (lr=1e-4, A100, early stopped @ ep35)
-│       │   ├── config.json
-│       │   └── history.json
-│       ├── final_lr6e5_50ep/          # Definitive final run (lr=6e-5, A100) — mIoU=0.8780 ✅
-│       │   ├── config.json
-│       │   └── history.json
-│       ├── sweep_lr1e4/               # Sweep run 1: lr=1e-4, 20 epochs — mIoU=0.8735
-│       │   ├── config.json
-│       │   └── history.json
-│       ├── sweep_lr1e5/               # Sweep run 3: lr=1e-5, 20 epochs — mIoU=0.8643
-│       │   ├── config.json
-│       │   └── history.json
-│       └── sweep_lr6e5/               # Sweep run 2: lr=6e-5, 20 epochs — mIoU=0.8805
+│       ├── final_lr1e4/               # Final run (lr=1e-4, A100, early stopped @ ep35) — mIoU=0.8712
+│       │   ├── config.json            # Training hyperparameters
+│       │   └── history.json           # Per-epoch metrics
+│       ├── final_lr6e5_50ep/          # Definitive final run (lr=6e-5, A100, early stopped @ ep17) — mIoU=0.8780 ✅
+│       │   ├── config.json            # Training hyperparameters
+│       │   └── history.json           # Per-epoch metrics
+│       ├── sweep_lr1e4/               # Sweep run 1: lr=1e-4, 20 epochs — mIoU=0.8735, @ ep14
+│       │   ├── config.json            # Training hyperparameters
+│       │   └── history.json           # Per-epoch metrics
+│       ├── sweep_lr6e5/               # Sweep run 2: lr=6e-5, 20 epochs — mIoU=0.8805, @ ep17
+│       │   ├── config.json            # Training hyperparameters
+│       │   └── history.json           # Per-epoch metrics
+│       └── sweep_lr1e5/               # Sweep run 3: lr=1e-5, 20 epochs — mIoU=0.8643, @ ep18
 │           ├── config.json
 │           └── history.json
 │   └── figures/                       # EDA figures
@@ -111,7 +111,7 @@ AI-final-project/
 │   ├── dataset.py                     # Data loading, augmentation, DataLoader factory for all 3 conditions
 │   ├── evaluate.py                    # Evaluation metrics: mIoU, F1/Dice, MAE, FPR
 │   ├── generate_splits.py             # Generates all split JSON files — run once before trainin
-│   ├── engine_exp1.py
+│   ├── engine_exp1.py 
 │   ├── train_exp2.py
 │   └── train_exp3.py                     
 ├── .gitignore                         # Excludes data/, checkpoints, figures, __pycache__
