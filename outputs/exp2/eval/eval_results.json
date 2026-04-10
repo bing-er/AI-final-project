@@ -1,6 +1,6 @@
 {
   "experiment": "exp2",
-  "checkpoint": "outputs/exp2/final/best_model.pth",
+  "checkpoint": "/content/drive/MyDrive/project/exp2/final/best_model.pth",
   "summary": [
     {
       "label": "ACD1K",
