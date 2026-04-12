@@ -367,9 +367,9 @@ Computed from training sets (values normalized to [0, 1]):
 
 | Member | Role | Contributions |
 |---|---|---|
-| **Binger Yu** | Data & Preprocessing Lead + Experiment 3 Lead | EDA (`01_EDA_Binger.ipynb`); preprocessing pipeline (`src/dataset.py`) including mask binarization, Albumentations augmentation, and `WeightedRandomSampler`; reproducible split generation (`src/generate_splits.py`); DataLoader factory for all three experimental conditions; Experiment 3 training (`src/train_exp3.py`, `02_train_exp3_Binger.ipynb`); GitHub repository setup, README, `requirements.txt`, `.gitignore`; report sections: Dataset, Conclusion, Contributions, Acknowledgements |
+| **Binger Yu** | Data & Preprocessing Lead + Experiment 3 Lead | EDA (`01_EDA_Binger.ipynb`); preprocessing pipeline (`src/dataset.py`) including mask binarization, Albumentations augmentation, and `WeightedRandomSampler`; reproducible split generation (`src/generate_splits.py`); evaluation framework (`src/evaluate.py`); DataLoader factory for all three experimental conditions; Experiment 3 training (`src/train_exp3.py`, `02_train_exp3_Binger.ipynb`); GitHub repository setup, README, `requirements.txt`, `.gitignore`; report sections: Dataset, Conclusion, Contributions, Acknowledgements |
 | **Yansong Jia** | Methodology Lead + Experiment 1 Lead | SINetV2 architecture (`src/sinetv2.py`); Experiment 1 training engine (`src/engine_exp1.py`); overall experimental design and methodology review; hyperparameter tuning for Exp 1; report sections: Introduction, Related Work, Methodology, Discussion (co-author) |
-| **Sepehr Mansouri** | Experiment 2 Lead + Evaluation Lead | SegFormer-B2 transfer learning pipeline (`src/train_exp2.py`); evaluation framework (`src/evaluate.py`); hold-out test set evaluation and visualisations (`03_evaluate_Sepehr_Yansong.ipynb`); hyperparameter sweeps for Exp 2; report sections: Abstract, Experiments & Results, Discussion (co-author) |
+| **Sepehr Mansouri** | Experiment 2 Lead + Evaluation Lead | SegFormer-B2 transfer learning pipeline (`src/train_exp2.py`); hold-out test set evaluation and visualisations (`03_evaluate_Sepehr_Yansong.ipynb`); hyperparameter sweeps for Exp 2; report sections: Abstract, Experiments & Results, Discussion (co-author) |
 
 ---
 
