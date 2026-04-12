@@ -41,13 +41,15 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from transformers import SegformerForSemanticSegmentation
 
+# added for reproducibility
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dataset import build_holdout_dataset
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Metrics
-# ──────────────────────────────────────────────────────────────────────────────
 
 def compute_metrics_per_image(pred_prob, mask):
     """
@@ -86,9 +88,7 @@ def compute_metrics_per_image(pred_prob, mask):
     return {'mIoU': miou, 'F1': f1, 'MAE': mae}
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Model loading
-# ──────────────────────────────────────────────────────────────────────────────
 
 def load_model(checkpoint_path, device):
     """
@@ -128,9 +128,7 @@ def load_model(checkpoint_path, device):
     return model
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Evaluation loop
-# ──────────────────────────────────────────────────────────────────────────────
 
 def evaluate_subset(model, dataset, device, input_size=512):
     """
@@ -209,9 +207,9 @@ def summarise(results, label):
     }
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+ 
 # Main
-# ──────────────────────────────────────────────────────────────────────────────
+ 
 
 def evaluate(args):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -220,10 +218,10 @@ def evaluate(args):
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # ── Load model ────────────────────────────────────────────────────────
+    # ── Load model
     model = load_model(args.checkpoint, device)
 
-    # ── Build hold-out subsets ────────────────────────────────────────────
+    # ── Build hold-out subsets
     # Three subsets together form the 200-image final test set:
     #   acd1k  — 100 military camouflage images (terrain-stratified)
     #   cod10k — 50  animal camouflage images   (super-class stratified)
@@ -243,7 +241,7 @@ def evaluate(args):
         print('ERROR: No hold-out sets found. Run generate_splits.py first.')
         return
 
-    # ── Run evaluation ────────────────────────────────────────────────────
+    # ── Run evaluation
     print('\n[Evaluation results]')
     print('=' * 55)
 
@@ -256,7 +254,7 @@ def evaluate(args):
         row = summarise(per_img, name.upper())
         summary_rows.append(row)
 
-    # ── Camouflage-only aggregate (ACD1K + COD10K, noise excluded) ────────
+    # ── Camouflage-only aggregate (ACD1K + COD10K, noise excluded)
     # Noise images have all-zero GT masks; excluding them from the camouflage
     # aggregate gives a cleaner picture of detection performance.
     camouflage_results = (all_per_image.get('acd1k', []) +
@@ -265,12 +263,12 @@ def evaluate(args):
         row = summarise(camouflage_results, 'ALL CAMOUFLAGE (ACD1K+COD10K)')
         summary_rows.append(row)
 
-    # ── Full combined (all 200 images including noise) ────────────────────
+    # ── Full combined (all 200 images including noise)
     all_results = sum(all_per_image.values(), [])
     row = summarise(all_results, 'FULL HOLD-OUT (all 200 images)')
     summary_rows.append(row)
 
-    # ── Summary table ─────────────────────────────────────────────────────
+    # ── Summary table
     print('\n' + '=' * 55)
     print('SUMMARY TABLE')
     print('=' * 55)
@@ -281,7 +279,7 @@ def evaluate(args):
               f"{r['F1_mean']:>6.4f} {r['MAE_mean']:>6.4f}")
     print('=' * 55)
 
-    # ── Success criteria check (ACD1K subset only) ────────────────────────
+    # ── Success criteria check (ACD1K subset only) 
     # Thresholds from proposal Section 1.5:
     #   mIoU >= 0.65 and F1 >= 0.75 on the ACD1K hold-out subset.
     acd1k_row = next((r for r in summary_rows if r['label'] == 'ACD1K'), None)
@@ -294,7 +292,7 @@ def evaluate(args):
         print(f"  F1   >= 0.75 : {acd1k_row['F1_mean']:.4f}  "
               f"{'✅ PASS' if f1_pass else '❌ FAIL'}")
 
-    # ── Save full results to JSON ──────────────────────────────────────────
+    # ── Save full results to JSON
     # Infer experiment label from checkpoint path for easy identification.
     checkpoint_str = str(args.checkpoint)
     if 'exp2' in checkpoint_str:
@@ -316,9 +314,9 @@ def evaluate(args):
     print(f'\nFull results saved → {results_path}')
 
 
-# ──────────────────────────────────────────────────────────────────────────────
+ 
 # Argument parser
-# ──────────────────────────────────────────────────────────────────────────────
+ 
 
 def parse_args():
     p = argparse.ArgumentParser(
