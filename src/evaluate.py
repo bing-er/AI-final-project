@@ -1,9 +1,9 @@
 """
-evaluate.py — Final Hold-Out Evaluation for Experiment 3
+evaluate.py — Final Hold-Out Evaluation for Experiments 2 and 3
 COMP 9130 Capstone: Military Camouflage Object Detection
 Author: Binger Yu (Data & Preprocessing Lead + Experiment 3 Lead)
 
-Runs the best saved SegFormer-B2 checkpoint against the 200-image held-out
+Runs a saved SegFormer-B2 checkpoint against the 200-image held-out
 final test set (100 ACD1K + 50 COD10K + 50 noise distractors) and reports
 mIoU, F1/Dice, and MAE per subset plus an overall summary table.
 
@@ -15,9 +15,16 @@ Success criteria (on ACD1K hold-out subset):
   mIoU >= 0.65
   F1   >= 0.75
 
-Usage (Colab):
-    !python src/evaluate.py \
-        --checkpoint outputs/exp3/best_model.pth \
+Usage (Experiment 2):
+    python src/evaluate.py \
+        --checkpoint outputs/exp2/final/best_model.pth \
+        --data_root  data/ \
+        --splits_dir splits/ \
+        --output_dir outputs/exp2/eval/
+
+Usage (Experiment 3):
+    python src/evaluate.py \
+        --checkpoint outputs/exp3/final/best_model.pth \
         --data_root  data/ \
         --splits_dir splits/ \
         --output_dir outputs/exp3/eval/
@@ -99,7 +106,9 @@ def load_model(checkpoint_path, device):
     Returns:
         SegformerForSemanticSegmentation in eval mode.
     """
-    ckpt  = torch.load(checkpoint_path, map_location=device)
+    # weights_only=False required: checkpoints store numpy scalars in metadata
+    # (val_mIoU, config dict). Safe because these files are our own trained models.
+    ckpt  = torch.load(checkpoint_path, map_location=device, weights_only=False)
     model = SegformerForSemanticSegmentation.from_pretrained(
         'nvidia/segformer-b2-finetuned-ade-512-512',
         num_labels=1,
@@ -191,12 +200,12 @@ def summarise(results, label):
     return {
         'label':     label,
         'n':         len(results),
-        'mIoU_mean': round(np.mean(mious), 4),
-        'mIoU_std':  round(np.std(mious),  4),
-        'F1_mean':   round(np.mean(f1s),   4),
-        'F1_std':    round(np.std(f1s),    4),
-        'MAE_mean':  round(np.mean(maes),  4),
-        'MAE_std':   round(np.std(maes),   4),
+        'mIoU_mean': float(np.mean(mious)),
+        'mIoU_std':  float(np.std(mious)),
+        'F1_mean':   float(np.mean(f1s)),
+        'F1_std':    float(np.std(f1s)),
+        'MAE_mean':  float(np.mean(maes)),
+        'MAE_std':   float(np.std(maes)),
     }
 
 
@@ -286,8 +295,18 @@ def evaluate(args):
               f"{'✅ PASS' if f1_pass else '❌ FAIL'}")
 
     # ── Save full results to JSON ──────────────────────────────────────────
+    # Infer experiment label from checkpoint path for easy identification.
+    checkpoint_str = str(args.checkpoint)
+    if 'exp2' in checkpoint_str:
+        exp_label = 'exp2'
+    elif 'exp3' in checkpoint_str:
+        exp_label = 'exp3'
+    else:
+        exp_label = 'unknown'
+
     out = {
-        'checkpoint': str(args.checkpoint),
+        'experiment': exp_label,
+        'checkpoint': checkpoint_str,
         'summary':    summary_rows,
         'per_image':  {k: v for k, v in all_per_image.items()},
     }
@@ -303,11 +322,11 @@ def evaluate(args):
 
 def parse_args():
     p = argparse.ArgumentParser(
-        description='Final hold-out evaluation for Experiment 3 (SegFormer-B2)'
+        description='Final hold-out evaluation for Experiments 2 and 3 (SegFormer-B2)'
     )
     p.add_argument('--checkpoint',
                    required=True,
-                   help='Path to best_model.pth saved by train_exp3.py')
+                   help='Path to best_model.pth saved by train_exp2.py or train_exp3.py')
     p.add_argument('--data_root',
                    default='data/',
                    help='Root directory containing COD10K, ACD1K, CAMO folders')

@@ -272,7 +272,11 @@ Colab notebook: `notebooks/02_train_exp3_Binger.ipynb`
 
 ### Evaluation — Hold-Out Test Set (Sepehr & Yansong)
 
-Runs inference on the fixed 200-image held-out test set (100 ACD1K + 50 COD10K + 50 noise distractors) and writes `eval_results.json`.
+The reported results were produced by running `notebooks/03_evaluate_Sepehr_Yansong.ipynb` on Google Colab. The notebook loads each experiment's best checkpoint, runs inference on the fixed 200-image held-out test set (100 ACD1K + 50 COD10K + 50 noise distractors), and writes `eval_results.json`.
+
+**To re-run evaluation on Colab:** open `notebooks/03_evaluate_Sepehr_Yansong.ipynb`, mount your Google Drive, point the checkpoint path to the correct `best_model.pth`, and run all cells in order.
+
+Alternatively, `src/evaluate.py` (written by Binger) provides a standalone CLI that reproduces the same results outside of Colab:
 
 **Experiment 2:**
 
@@ -294,7 +298,7 @@ python src/evaluate.py \
     --output_dir outputs/exp3/eval
 ```
 
-> Experiment 1 results are already saved in `outputs/exp1/eval/eval_results.json`.
+> `evaluate.py` supports SegFormer-B2 checkpoints (Experiments 2 and 3). Experiment 1 results are already saved in `outputs/exp1/eval/eval_results.json`.
 
 Expected output (`eval_results.json`):
 
@@ -304,8 +308,6 @@ ACD1K    100   0.8591  0.8546  0.0486   ← primary metric
 COD10K    50   0.8654  0.8056  0.0185
 Noise     50   0.9149  0.8400  0.0102
 ```
-
-Colab notebook: `notebooks/03_evaluate_Sepehr_Yansong.ipynb`
 
 ---
 
@@ -375,19 +377,19 @@ Computed from training sets (values normalized to [0, 1]):
 
 ## Project Status
 
-| Component | Owner | Status |
-|---|---|---|
-| Dataset acquisition (COD10K, ACD1K, CAMO) | Binger | ✅ Complete |
-| EDA notebook | Binger | ✅ Complete |
-| Preprocessing pipeline (`src/dataset.py`) | Binger | ✅ Complete |
-| Split generator + index files (`splits/`) | Binger | ✅ Complete |
-| SINetV2 architecture (`src/sinetv2.py`) | Yansong | ✅ Complete |
-| Experiment 1 training (`src/engine_exp1.py`) | Yansong | ✅ Complete |
-| Experiment 2 training (`src/train_exp2.py`) | Sepehr | ✅ Complete |
-| Experiment 3 training (`src/train_exp3.py`) | Binger | ✅ Complete |
-| Evaluation script (`src/evaluate.py`) | Sepehr | ✅ Complete |
+| Component | Owner            | Status |
+|---|------------------|---|
+| Dataset acquisition (COD10K, ACD1K, CAMO) | Binger           | ✅ Complete |
+| EDA notebook | Binger           | ✅ Complete |
+| Preprocessing pipeline (`src/dataset.py`) | Binger           | ✅ Complete |
+| Split generator + index files (`splits/`) | Binger           | ✅ Complete |
+| SINetV2 architecture (`src/sinetv2.py`) | Yansong          | ✅ Complete |
+| Experiment 1 training (`src/engine_exp1.py`) | Yansong          | ✅ Complete |
+| Experiment 2 training (`src/train_exp2.py`) | Sepehr           | ✅ Complete |
+| Experiment 3 training (`src/train_exp3.py`) | Binger           | ✅ Complete |
+| Evaluation script (`src/evaluate.py`) | Binger           | ✅ Complete |
 | Hold-out evaluation — all 3 experiments | Sepehr & Yansong | ✅ Complete |
-| Final report | All | ✅ Complete |
+| Final report | All              | ✅ Complete |
 | PowerPoint presentation | Yansong & Sepehr | ⏳ In progress |
 
 ---
