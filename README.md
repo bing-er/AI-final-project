@@ -294,7 +294,7 @@ python src/evaluate.py \
     --output_dir outputs/exp3/eval
 ```
 
-> `evaluate.py` is designed for SegFormer-B2 checkpoints (Experiments 2 and 3). Experiment 1 results are already saved in `outputs/exp1/eval/eval_results.json`.
+> Experiment 1 results are already saved in `outputs/exp1/eval/eval_results.json`.
 
 Expected output (`eval_results.json`):
 
