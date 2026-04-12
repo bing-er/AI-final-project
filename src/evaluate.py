@@ -41,6 +41,10 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from transformers import SegformerForSemanticSegmentation
 
+# added for reproducibility
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dataset import build_holdout_dataset
 
