@@ -40,7 +40,7 @@ from dataset import (
     get_val_transforms,
     get_val_files,
 )
-from models.sinetv2 import build_sinetv2
+from sinetv2 import build_sinetv2
 
 
 # ──────────────────────────────────────────────────────────────────────────────
