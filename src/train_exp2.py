@@ -43,6 +43,10 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 from transformers import SegformerForSemanticSegmentation
 import torch.nn.functional as F
 
+# added for reproducibility
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
 # Allow running from repo root or src/ 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
