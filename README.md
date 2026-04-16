@@ -385,20 +385,20 @@ Computed from training sets (values normalized to [0, 1]):
 
 ## Project Status
 
-| Component | Owner            | Status |
-|---|------------------|---|
-| Dataset acquisition (COD10K, ACD1K, CAMO) | Binger           | ✅ Complete |
-| EDA notebook | Binger           | ✅ Complete |
-| Preprocessing pipeline (`src/dataset.py`) | Binger           | ✅ Complete |
-| Split generator + index files (`splits/`) | Binger           | ✅ Complete |
-| SINetV2 architecture (`src/sinetv2.py`) | Yansong          | ✅ Complete |
-| Experiment 1 training (`src/engine_exp1.py`) | Yansong          | ✅ Complete |
-| Experiment 2 training (`src/train_exp2.py`) | Sepehr           | ✅ Complete |
-| Experiment 3 training (`src/train_exp3.py`) | Binger           | ✅ Complete |
-| Evaluation script (`src/evaluate.py`) | Binger           | ✅ Complete |
+| Component | Owner   | Status |
+|---|---------|---|
+| Dataset acquisition (COD10K, ACD1K, CAMO) | Binger  | ✅ Complete |
+| EDA notebook | Binger  | ✅ Complete |
+| Preprocessing pipeline (`src/dataset.py`) | Binger  | ✅ Complete |
+| Split generator + index files (`splits/`) | Binger  | ✅ Complete |
+| SINetV2 architecture (`src/sinetv2.py`) | Yansong | ✅ Complete |
+| Experiment 1 training (`src/engine_exp1.py`) | Yansong | ✅ Complete |
+| Experiment 2 training (`src/train_exp2.py`) | Sepehr  | ✅ Complete |
+| Experiment 3 training (`src/train_exp3.py`) | Binger  | ✅ Complete |
+| Evaluation script (`src/evaluate.py`) | Binger  | ✅ Complete |
 | Hold-out evaluation — all 3 experiments | Sepehr & Yansong | ✅ Complete |
-| Final report | All              | ✅ Complete |
-| PowerPoint presentation | Yansong & Sepehr | ⏳ In progress |
+| Final report | All     | ✅ Complete |
+| PowerPoint | Yansong | ✅ Complete |
 
 ---
 
