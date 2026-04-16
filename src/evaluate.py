@@ -1,3 +1,35 @@
+"""
+evaluate.py — Final Hold-Out Evaluation for Experiments 2 and 3
+COMP 9130 Capstone: Military Camouflage Object Detection
+Author: Binger Yu (Data & Preprocessing Lead + Experiment 3 Lead)
+
+Runs a saved SegFormer-B2 checkpoint against the 200-image held-out
+final test set (100 ACD1K + 50 COD10K + 50 noise distractors) and reports
+mIoU, F1/Dice, and MAE per subset plus an overall summary table.
+
+Architecture: SegFormer-B2 (Experiments 2 and 3 only).
+Input resolution: 512×512 (matches nvidia/segformer-b2-finetuned-ade-512-512).
+This script is not compatible with Experiment 1 (SINetV2, 352×352).
+
+Success criteria (on ACD1K hold-out subset):
+  mIoU >= 0.65
+  F1   >= 0.75
+
+Usage (Experiment 2):
+    python src/evaluate.py \
+        --checkpoint outputs/exp2/final/best_model.pth \
+        --data_root  data/ \
+        --splits_dir splits/ \
+        --output_dir outputs/exp2/eval/
+
+Usage (Experiment 3):
+    python src/evaluate.py \
+        --checkpoint outputs/exp3/final/best_model.pth \
+        --data_root  data/ \
+        --splits_dir splits/ \
+        --output_dir outputs/exp3/eval/
+"""
+
 import os
 import json
 import sys

@@ -272,11 +272,19 @@ Colab notebook: `notebooks/02_train_exp3_Binger.ipynb`
 
 ### Evaluation — Hold-Out Test Set (Sepehr & Yansong)
 
-The reported results were produced by running `notebooks/03_evaluate_Sepehr_Yansong.ipynb` on Google Colab. The notebook loads each experiment's best checkpoint, runs inference on the fixed 200-image held-out test set (100 ACD1K + 50 COD10K + 50 noise distractors), and writes `eval_results.json`.
+The reported results were produced by running `notebooks/03_evaluate_Sepehr_Yansong.ipynb` on Google Colab. The notebook loads all three experiments' best checkpoints, runs inference on the fixed 200-image held-out test set (100 ACD1K + 50 COD10K + 50 noise distractors), generates detection visualisations, training curves, cross-experiment comparisons, and writes `eval_results.json` for each experiment.
 
-**To re-run evaluation on Colab:** open `notebooks/03_evaluate_Sepehr_Yansong.ipynb`, mount your Google Drive, point the checkpoint path to the correct `best_model.pth`, and run all cells in order.
+**To re-run evaluation on Colab:** open `notebooks/03_evaluate_Sepehr_Yansong.ipynb`, mount your Google Drive, set the three checkpoint paths in the **Load Model & Hold-Out Data** cell, and run all cells in order:
 
-Alternatively, `src/evaluate.py` (written by Binger) provides a standalone CLI that reproduces the same results outside of Colab:
+```python
+exp1_path = "/content/drive/MyDrive/project/exp1/best_model.pth"
+exp2_path = "/content/drive/MyDrive/project/exp2/final/best_model.pth"
+exp3_path = "/content/drive/MyDrive/project/exp3/final/best_model.pth"
+```
+
+The notebook will automatically skip any checkpoint whose path does not exist, so you can run a partial evaluation if only some models are available.
+
+Alternatively, `src/evaluate.py` (written by Binger) provides a standalone CLI that reproduces the SegFormer metrics outside of Colab:
 
 **Experiment 2:**
 
@@ -298,7 +306,7 @@ python src/evaluate.py \
     --output_dir outputs/exp3/eval
 ```
 
-> `evaluate.py` supports SegFormer-B2 checkpoints (Experiments 2 and 3). Experiment 1 results are already saved in `outputs/exp1/eval/eval_results.json`.
+> `evaluate.py` supports SegFormer-B2 checkpoints (Experiments 2 and 3). For Experiment 1, use the notebook — it loads the SINetV2 checkpoint directly via `load_model()`.
 
 Expected output (`eval_results.json`):
 
